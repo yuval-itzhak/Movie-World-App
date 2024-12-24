@@ -19,9 +19,13 @@ class ItemsViewModel(application : Application) : AndroidViewModel(application) 
     fun deleteItem(item: Item){
         repository.deleteItem(item)
     }
+    fun updateItem(item: Item) {
+        repository.updateItem(item)
+    }
 
-    private val _chosenItem = MutableLiveData<Item>()
-    val chosenItem : LiveData<Item> get() = _chosenItem
+    //מאפשר לך לשתף את הנתונים בין ה-Fragments
+    private val _chosenItem = MutableLiveData<Item?>()
+    val chosenItem : LiveData<Item?> get() = _chosenItem
 
     fun setItem(item : Item){
         _chosenItem.value = item
@@ -29,6 +33,10 @@ class ItemsViewModel(application : Application) : AndroidViewModel(application) 
 
     fun deleteAll(){
         repository.deleteAll()
+    }
+
+    fun clearChosenItem() {
+        _chosenItem.value = null
     }
 
 

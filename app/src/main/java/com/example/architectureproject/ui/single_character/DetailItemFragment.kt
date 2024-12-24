@@ -29,9 +29,9 @@ class DetailItemFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.chosenItem.observe(viewLifecycleOwner){//it:item
-            binding.itemTitle.text = it.title
-            binding.itemDescription.text = it.description
-            Glide.with(requireContext()).load(it.photo).circleCrop().into(binding.itemImage)
+            binding.itemTitle.text = it?.title
+            binding.itemDescription.text = it?.description
+            Glide.with(requireContext()).load(it?.photo).circleCrop().into(binding.itemImage)
         }
     }
 

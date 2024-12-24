@@ -37,6 +37,17 @@
                 android:textSize="18sp"
                 android:id="@+id/item_description"
                 android:layout_marginTop="6dp"/>
+
+            <!-- כפתור עריכה -->
+            <ImageButton
+                android:id="@+id/edit_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:src="@drawable/outline_contract_edit_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Edit Button" />
         </LinearLayout>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -15,6 +15,7 @@ class ItemAdapter(val items:List<Item>, val callBack: ItemListener)
     interface ItemListener {
         fun onItemClicked(position: Int)
         fun onItemLongClicked(position: Int)
+        fun onEditClicked(position: Int)
     }
 
 
@@ -24,7 +25,13 @@ class ItemAdapter(val items:List<Item>, val callBack: ItemListener)
             init {
                 binding.root.setOnClickListener(this)
                 binding.root.setOnLongClickListener(this)
+
+                // מאזין לכפתור עריכה
+                binding.editButton.setOnClickListener {
+                    callBack.onEditClicked(adapterPosition) // קריאה לקולבק עם מיקום הפריט
+                }
             }
+
 
         override fun onClick(p0: View?) {
             callBack.onItemClicked(adapterPosition)

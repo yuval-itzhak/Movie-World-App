@@ -40,27 +40,49 @@ class AddItemFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = AddItemLayoutBinding.inflate(inflater, container, false)
-        binding.finishBtn.setOnClickListener{
-//            val bundle = bundleOf("title" to binding.itemTitle.text.toString(),
-//                "description" to binding.itemDescription.text.toString() )
-//            findNavController().navigate(R.id.action_addItemFragment_to_allItemsFragment, bundle)
-
-            val item = Item(binding.itemTitle.text.toString(), binding.itemDescription.text.toString(),
-                imageUri.toString())
-
-            //ItemManager.add(item)
-            viewModel.addItem(item)
-            findNavController().navigate(R.id.action_addItemFragment_to_allItemsFragment)
-
-        }
-        binding.imageBtn.setOnClickListener{
-            pickImageLauncher.launch(arrayOf("image/*"))
-        }
+//        binding.imageBtn.setOnClickListener{
+//            pickImageLauncher.launch(arrayOf("image/*"))
+//        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Prefill fields if editing an existing item
+        val chosenItem = viewModel.chosenItem.value
+        chosenItem?.let { item ->
+            binding.itemTitle.setText(item.title)
+            binding.itemDescription.setText(item.description)
+            imageUri = item.photo?.let { Uri.parse(it) }
+            binding.resultImage.setImageURI(imageUri)
+        }
+
+        // Handle Finish button
+        binding.finishBtn.setOnClickListener {
+            val title = binding.itemTitle.text.toString()
+            val description = binding.itemDescription.text.toString()
+            val photo = imageUri?.toString()
+
+            if (chosenItem != null) {
+                // Update existing item
+                val updatedItem = chosenItem.copy(title = title, description = description, photo = photo)
+                viewModel.updateItem(updatedItem)
+            } else {
+                // Add new item
+                val newItem = Item(title, description, photo)
+                viewModel.addItem(newItem)
+            }
+
+            // Clear chosen item after finishing
+            viewModel.clearChosenItem()
+            findNavController().navigate(R.id.action_addItemFragment_to_allItemsFragment)
+        }
+
+        // Handle Image button
+        binding.imageBtn.setOnClickListener {
+            pickImageLauncher.launch(arrayOf("image/*"))
+        }
+
     }
 
 
