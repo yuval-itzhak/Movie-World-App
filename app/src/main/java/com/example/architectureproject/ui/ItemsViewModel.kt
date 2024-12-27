@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.architectureproject.data.repository.ItemRepository
-import il.co.syntax.architectureprojects.Item
+import com.example.architectureproject.data.model.Item
 
 class ItemsViewModel(application : Application) : AndroidViewModel(application) {
 

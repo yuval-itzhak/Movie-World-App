@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import com.example.architectureproject.data.local_db.ItemDao
 import com.example.architectureproject.data.local_db.ItemDataBase
-import il.co.syntax.architectureprojects.Item
+import com.example.architectureproject.data.model.Item
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext

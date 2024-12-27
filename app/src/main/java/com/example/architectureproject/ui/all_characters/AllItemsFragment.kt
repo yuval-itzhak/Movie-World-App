@@ -9,8 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.os.bundleOf
-import androidx.core.os.trace
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -20,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.architectureproject.R
 import com.example.architectureproject.databinding.AllItemsLayoutBinding
 import com.example.architectureproject.ui.ItemsViewModel
-import il.co.syntax.architectureprojects.Item
 
 class AllItemsFragment : Fragment() {
 

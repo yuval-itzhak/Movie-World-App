@@ -7,7 +7,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import il.co.syntax.architectureprojects.Item
+import com.example.architectureproject.data.model.Item
 
 @Dao
 interface ItemDao {

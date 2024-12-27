@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import il.co.syntax.architectureprojects.Item
+import com.example.architectureproject.data.model.Item
 
 @Database(entities = arrayOf(Item::class), version = 1, exportSchema = false)
 abstract class ItemDataBase : RoomDatabase() {

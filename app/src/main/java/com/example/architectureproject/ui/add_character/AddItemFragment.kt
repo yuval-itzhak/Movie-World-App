@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.architectureproject.R
 import com.example.architectureproject.databinding.AddItemLayoutBinding
 import com.example.architectureproject.ui.ItemsViewModel
-import il.co.syntax.architectureprojects.Item
+import com.example.architectureproject.data.model.Item
 
 class AddItemFragment : Fragment() {
 
@@ -69,7 +69,7 @@ class AddItemFragment : Fragment() {
                 viewModel.updateItem(updatedItem)
             } else {
                 // Add new item
-                val newItem = Item(title, description, photo)
+                val newItem = Item(title = title, description = description, photo = photo)
                 viewModel.addItem(newItem)
             }
 

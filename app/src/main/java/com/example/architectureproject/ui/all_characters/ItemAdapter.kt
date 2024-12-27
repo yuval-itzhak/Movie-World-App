@@ -2,7 +2,7 @@ package com.example.architectureproject.ui.all_characters
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.architectureproject.databinding.ItemLayoutBinding
-import il.co.syntax.architectureprojects.Item
+import com.example.architectureproject.data.model.Item
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
