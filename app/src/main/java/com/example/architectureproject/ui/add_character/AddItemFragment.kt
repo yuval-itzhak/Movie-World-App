@@ -18,18 +18,21 @@ import com.example.architectureproject.data.model.Item
 
 class AddItemFragment : Fragment() {
 
-    private var _binding : AddItemLayoutBinding? = null
+    private var _binding: AddItemLayoutBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel : ItemsViewModel by  activityViewModels()
+    private val viewModel: ItemsViewModel by activityViewModels()
 
 
-    private var imageUri : Uri?= null
-    val pickImageLauncher : ActivityResultLauncher<Array<String>> =
-        registerForActivityResult(ActivityResultContracts.OpenDocument()){
+    private var imageUri: Uri? = null
+    val pickImageLauncher: ActivityResultLauncher<Array<String>> =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) {
             binding.resultImage.setImageURI(it)
             if (it != null) {
-                requireActivity().contentResolver.takePersistableUriPermission(it, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                requireActivity().contentResolver.takePersistableUriPermission(
+                    it,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
             }
             imageUri = it
         }
@@ -52,6 +55,10 @@ class AddItemFragment : Fragment() {
         val chosenItem = viewModel.chosenItem.value
         chosenItem?.let { item ->
             binding.itemTitle.setText(item.title)
+            binding.itemDirector.setText(item.director)
+            binding.itemWriter.setText(item.writer)
+            binding.itemStars.setText(item.stars)
+            binding.itemRelease.setText(item.release.toString())
             binding.itemDescription.setText(item.description)
             imageUri = item.photo?.let { Uri.parse(it) }
             binding.resultImage.setImageURI(imageUri)
@@ -60,16 +67,22 @@ class AddItemFragment : Fragment() {
         // Handle Finish button
         binding.finishBtn.setOnClickListener {
             val title = binding.itemTitle.text.toString()
+            val director=binding.itemDirector.text.toString()
+            val writer=binding.itemWriter.text.toString()
+            val stars=binding.itemStars.text.toString()
+            val release=binding.itemRelease.text.toString().toIntOrNull() ?: 0
             val description = binding.itemDescription.text.toString()
             val photo = imageUri?.toString()
 
+
             if (chosenItem != null) {
                 // Update existing item
-                val updatedItem = chosenItem.copy(title = title, description = description, photo = photo)
+                val updatedItem =
+                    chosenItem.copy(title = title, director =director, writer = writer, stars = stars, release = release, description = description, photo = photo)
                 viewModel.updateItem(updatedItem)
             } else {
                 // Add new item
-                val newItem = Item(title = title, description = description, photo = photo)
+                val newItem = Item(title = title, director =director, writer = writer, stars = stars, release = release, description = description, photo = photo)
                 viewModel.addItem(newItem)
             }
 
@@ -84,7 +97,6 @@ class AddItemFragment : Fragment() {
         }
 
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -10,7 +10,7 @@ import androidx.room.Update
 import com.example.architectureproject.data.model.Item
 
 @Dao
-interface ItemDao {
+interface  ItemDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addItem(item : Item)
