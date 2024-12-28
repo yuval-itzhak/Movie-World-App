@@ -1,53 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardUseCompatPadding="true"
     app:contentPadding="10dp"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    android:elevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <ImageView
+            android:id="@+id/item_image"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/ic_launcher_background"
-            android:id="@+id/item_image"/>
+            android:contentDescription="Item image"
+            android:scaleType="centerCrop" />
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical"
-            android:layout_marginStart="20sp"
-            android:gravity="center">
+            android:layout_marginStart="16dp">
+
             <TextView
+                android:id="@+id/item_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Main item title"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:id="@+id/item_title"/>
+                android:textColor="@android:color/black" />
+
             <TextView
+                android:id="@+id/item_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Items details description"
-                android:textSize="18sp"
-                android:id="@+id/item_description"
-                android:layout_marginTop="6dp"/>
+                android:text="Item details description"
+                android:textSize="16sp"
+                android:layout_marginTop="6dp"
+                android:textColor="@android:color/darker_gray" />
 
-            <!-- כפתור עריכה -->
-            <ImageButton
-                android:id="@+id/edit_button"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="end"
-                android:src="@drawable/outline_contract_edit_24"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Edit Button" />
         </LinearLayout>
 
+        <ImageButton
+            android:id="@+id/edit_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_movie_edit_24"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Edit Button"
+            android:layout_gravity="center_vertical" />
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
