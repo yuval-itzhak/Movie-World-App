@@ -1,5 +1,6 @@
 package com.example.architectureproject.ui.add_character
 
+//import GenreDecoration
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,10 +12,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.architectureproject.R
+import com.example.architectureproject.data.model.Item
 import com.example.architectureproject.databinding.AddItemLayoutBinding
 import com.example.architectureproject.ui.ItemsViewModel
-import com.example.architectureproject.data.model.Item
+import com.example.architectureproject.ui.genre_selection.GenreAdapter
+
 
 class AddItemFragment : Fragment() {
 
@@ -23,10 +27,25 @@ class AddItemFragment : Fragment() {
 
     private val viewModel: ItemsViewModel by activityViewModels()
 
-
     private var imageUri: Uri? = null
-    val pickImageLauncher: ActivityResultLauncher<Array<String>> =
-        registerForActivityResult(ActivityResultContracts.OpenDocument()) {
+    private lateinit var pickImageLauncher: ActivityResultLauncher<Array<String>>
+
+    private lateinit var genreAdapter: GenreAdapter
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = AddItemLayoutBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Initialize Image Picker
+        pickImageLauncher = registerForActivityResult(ActivityResultContracts.OpenDocument()) {
             binding.resultImage.setImageURI(it)
             if (it != null) {
                 requireActivity().contentResolver.takePersistableUriPermission(
@@ -37,20 +56,9 @@ class AddItemFragment : Fragment() {
             imageUri = it
         }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = AddItemLayoutBinding.inflate(inflater, container, false)
-//        binding.imageBtn.setOnClickListener{
-//            pickImageLauncher.launch(arrayOf("image/*"))
-//        }
-        return binding.root
-    }
+        // Setup RecyclerView
+        setupRecyclerView()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         // Prefill fields if editing an existing item
         val chosenItem = viewModel.chosenItem.value
         chosenItem?.let { item ->
@@ -67,22 +75,36 @@ class AddItemFragment : Fragment() {
         // Handle Finish button
         binding.finishBtn.setOnClickListener {
             val title = binding.itemTitle.text.toString()
-            val director=binding.itemDirector.text.toString()
-            val writer=binding.itemWriter.text.toString()
-            val stars=binding.itemStars.text.toString()
-            val release=binding.itemRelease.text.toString().toIntOrNull() ?: 0
+            val director = binding.itemDirector.text.toString()
+            val writer = binding.itemWriter.text.toString()
+            val stars = binding.itemStars.text.toString()
+            val release = binding.itemRelease.text.toString().toIntOrNull() ?: 0
             val description = binding.itemDescription.text.toString()
             val photo = imageUri?.toString()
 
-
             if (chosenItem != null) {
                 // Update existing item
-                val updatedItem =
-                    chosenItem.copy(title = title, director =director, writer = writer, stars = stars, release = release, description = description, photo = photo)
+                val updatedItem = chosenItem.copy(
+                    title = title,
+                    director = director,
+                    writer = writer,
+                    stars = stars,
+                    release = release,
+                    description = description,
+                    photo = photo
+                )
                 viewModel.updateItem(updatedItem)
             } else {
                 // Add new item
-                val newItem = Item(title = title, director =director, writer = writer, stars = stars, release = release, description = description, photo = photo)
+                val newItem = Item(
+                    title = title,
+                    director = director,
+                    writer = writer,
+                    stars = stars,
+                    release = release,
+                    description = description,
+                    photo = photo
+                )
                 viewModel.addItem(newItem)
             }
 
@@ -95,7 +117,22 @@ class AddItemFragment : Fragment() {
         binding.imageBtn.setOnClickListener {
             pickImageLauncher.launch(arrayOf("image/*"))
         }
+    }
 
+    private fun setupRecyclerView() {
+        // Initialize the adapter with sample data and a click listener
+        val genres = listOf("Action", "Comedy", "Drama", "Sci-Fi", "Horror")
+        val genreAdapter = GenreAdapter(genres, object : GenreAdapter.OnGenreClickListener {
+            override fun onGenreClick(genre: String) {
+                binding.genreSelection.setText("Selected genre: $genre")
+            }
+        })
+
+        // Setup RecyclerView
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = genreAdapter
+        }
     }
 
     override fun onDestroyView() {
