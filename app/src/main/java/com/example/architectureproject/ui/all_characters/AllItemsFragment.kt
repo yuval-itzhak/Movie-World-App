@@ -1,4 +1,10 @@
 package com.example.architectureproject.ui.all_characters
+//android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 
 import android.os.Bundle
 import android.text.Editable
@@ -38,8 +44,6 @@ class AllItemsFragment : Fragment() {
             viewModel.clearChosenItem() // Clear any previously selected item
             findNavController().navigate(R.id.action_allItemsFragment_to_addItemFragment)
         }
-
-        setupSearchBar()
         return binding.root
     }
 
@@ -107,16 +111,6 @@ class AllItemsFragment : Fragment() {
         }).attachToRecyclerView(binding.recycle)
     }
 
-    private fun setupSearchBar() {
-        binding.searchInput.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                adapter.filterByTitle(s.toString()) // Filter the adapter based on the search query
-            }
-
-            override fun afterTextChanged(s: Editable?) {}
-        })
-    }
 
     @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -124,13 +118,15 @@ class AllItemsFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    //כדי לקבל את האירוע של הלחיצה על הפח אשפה (על הmenu)
     @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_delete) {
-            AlertDialog.Builder(requireContext())
-                .setTitle("Confirm delete")
-                .setMessage("Are you sure you want to delete all?")
-                .setPositiveButton("Yes") { _, _ ->
+        if (item.itemId == R.id.action_delete){
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Confirm delete")
+                .setMessage("Are you sure you want to delete all? ")
+                .setPositiveButton("Yes"){
+                    p0, p1 ->
                     viewModel.deleteAll()
                     Toast.makeText(requireContext(), "Items deleted", Toast.LENGTH_SHORT).show()
                 }.show()

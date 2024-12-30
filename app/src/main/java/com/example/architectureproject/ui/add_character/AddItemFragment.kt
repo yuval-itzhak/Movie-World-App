@@ -23,6 +23,8 @@ import com.example.architectureproject.ui.genre_selection.GenreAdapter
 
 class AddItemFragment : Fragment() {
 
+
+
     private var _binding: AddItemLayoutBinding? = null
     private val binding get() = _binding!!
 
