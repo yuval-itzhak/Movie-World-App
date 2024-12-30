@@ -81,40 +81,82 @@ class AddItemFragment : Fragment() {
             val director = binding.itemDirector.text.toString()
             val writer = binding.itemWriter.text.toString()
             val stars = binding.itemStars.text.toString()
-            val release = binding.itemRelease.text.toString().toIntOrNull() ?: 0
+            val release = binding.itemRelease.text.toString().trim()
             val description = binding.itemDescription.text.toString()
             val photo = imageUri?.toString()
 
+            if (title.isEmpty()) {
+                Toast.makeText(requireContext(), "Enter movie name", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (genre.isEmpty()) {
+                Toast.makeText(requireContext(), "Select genre", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (!director.matches(Regex("^[a-zA-Z\\s]+$"))) {
+                Toast.makeText(requireContext(), "Enter director's name properly", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (!writer.matches(Regex("^[a-zA-Z\\s]+$"))) {
+                Toast.makeText(requireContext(), "Enter writer's name properly", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (!stars.matches(Regex("^[a-zA-Z\\s,]+$"))) {
+                Toast.makeText(requireContext(), "Enter stars' name properly with comma (,) between each name", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (!release.matches(Regex("^\\d{4}$"))) {
+                Toast.makeText(requireContext(), "Enter year with 4 digits only", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val currentYear = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)
+            try {
+                val releaseYear = release.toInt()
+                if (releaseYear > currentYear) {
+                    Toast.makeText(requireContext(), "Year cannot be in the future", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+            } catch (e: NumberFormatException) {
+                Toast.makeText(requireContext(), "Enter a valid year", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (description.isEmpty()) {
+                Toast.makeText(requireContext(), "Enter movie description", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (photo == null || photo.isEmpty()) {
+                Toast.makeText(requireContext(), "Select photo", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             if (chosenItem != null) {
-                // Update existing item
                 val updatedItem = chosenItem.copy(
                     title = title,
                     genre = genre,
                     director = director,
                     writer = writer,
                     stars = stars,
-                    release = release,
+                    release = release.toInt(),
                     description = description,
                     photo = photo
                 )
                 viewModel.updateItem(updatedItem)
             } else {
-                // Add new item
                 val newItem = Item(
                     title = title,
                     genre = genre,
                     director = director,
                     writer = writer,
                     stars = stars,
-                    release = release,
+                    release = release.toInt(),
                     description = description,
                     photo = photo
                 )
                 viewModel.addItem(newItem)
             }
 
-            // Clear chosen item after finishing
             viewModel.clearChosenItem()
             findNavController().navigate(R.id.action_addItemFragment_to_allItemsFragment)
         }
