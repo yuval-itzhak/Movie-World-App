@@ -11,6 +11,8 @@ data class Item(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int  = 0,
     @ColumnInfo(name = "content")
     val title:String,
+    @ColumnInfo(name = "genre")
+    val genre: String,
     @ColumnInfo(name = "director")
     val director: String,
     @ColumnInfo(name = "writer")
