@@ -119,8 +119,8 @@ class AddItemFragment : Fragment() {
             val currentYear = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)
             try {
                 val releaseYear = release.toInt()
-                if (releaseYear > currentYear) {
-                    Toast.makeText(requireContext(), "Year cannot be in the future", Toast.LENGTH_SHORT).show()
+                if (releaseYear > currentYear || releaseYear<1900) {
+                    Toast.makeText(requireContext(), "Year must be between 1900-nowadays", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
             } catch (e: NumberFormatException) {
