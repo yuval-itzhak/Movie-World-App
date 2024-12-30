@@ -1,12 +1,9 @@
 package com.example.architectureproject.ui.all_characters
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -21,10 +18,11 @@ import com.example.architectureproject.ui.ItemsViewModel
 
 class AllItemsFragment : Fragment() {
 
-    private var _binding : AllItemsLayoutBinding? = null
+    private var _binding: AllItemsLayoutBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel : ItemsViewModel by  activityViewModels()
+    private val viewModel: ItemsViewModel by activityViewModels()
+    private lateinit var adapter: ItemAdapter // Adapter with filtering capability
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,39 +38,39 @@ class AllItemsFragment : Fragment() {
             viewModel.clearChosenItem() // Clear any previously selected item
             findNavController().navigate(R.id.action_allItemsFragment_to_addItemFragment)
         }
+
+        setupSearchBar()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.getString("title" )?.let {
+
+        arguments?.getString("title")?.let {
             Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
         }
 
-        viewModel.items?.observe(viewLifecycleOwner){
-            binding.recycle.adapter = ItemAdapter(it, object : ItemAdapter.ItemListener {
+        viewModel.items?.observe(viewLifecycleOwner) { itemList ->
+            adapter = ItemAdapter(itemList, object : ItemAdapter.ItemListener {
                 override fun onItemClicked(position: Int) {
-                    Toast.makeText(requireContext(), "${it[position]}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "${itemList[position]}", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onItemLongClicked(position: Int) {
-                    val item = it[position]
+                    val item = itemList[position]
                     viewModel.setItem(item)
                     findNavController().navigate(R.id.action_allItemsFragment_to_detailItemFragment)
                 }
 
                 override fun onEditClicked(position: Int) {
-
-                    val item = it[position]
+                    val item = itemList[position]
                     viewModel.setItem(item) // Pass the selected item to ViewModel for editing
                     findNavController().navigate(R.id.action_allItemsFragment_to_addItemFragment)
-
                 }
             })
+            binding.recycle.adapter = adapter
             binding.recycle.layoutManager = LinearLayoutManager(requireContext())
         }
-
-
 
         ItemTouchHelper(object : ItemTouchHelper.Callback() {
             override fun getMovementFlags(
@@ -84,39 +82,41 @@ class AllItemsFragment : Fragment() {
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
-            ): Boolean {
-                TODO("Not yet implemented")
-            }
+            ): Boolean = false
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                //will give me the current item (the item that i did the swap action on him)
-                //the adapterPosition will return the index of the item in the items list that representing in the view
                 val position = viewHolder.adapterPosition
                 val item = (binding.recycle.adapter as ItemAdapter).itemAt(position)
-                // הצגת דיאלוג אישור
+
                 AlertDialog.Builder(requireContext())
                     .setTitle("Confirm Deletion")
                     .setMessage("Are you sure you want to delete this item?")
                     .setPositiveButton("Yes") { _, _ ->
-                        // אם המשתמש מאשר, מוחקים את הפריט
                         viewModel.deleteItem(item)
                         Toast.makeText(requireContext(), "Item deleted", Toast.LENGTH_SHORT).show()
                     }
                     .setNegativeButton("No") { _, _ ->
-                        // אם המשתמש לא מאשר, מחזירים את הפריט לרשימה
                         (binding.recycle.adapter as ItemAdapter).notifyItemChanged(position)
                         Toast.makeText(requireContext(), "Item not deleted", Toast.LENGTH_SHORT).show()
                     }
                     .setOnCancelListener {
-                        // אם הדיאלוג נסגר ללא פעולה, מחזירים את הפריט לרשימה
                         (binding.recycle.adapter as ItemAdapter).notifyItemChanged(position)
                     }
                     .show()
-
             }
         }).attachToRecyclerView(binding.recycle)
     }
 
+    private fun setupSearchBar() {
+        binding.searchInput.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                adapter.filterByTitle(s.toString()) // Filter the adapter based on the search query
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+    }
 
     @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -124,19 +124,16 @@ class AllItemsFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    //כדי לקבל את האירוע של הלחיצה על הפח אשפה (על הmenu)
     @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_delete){
-            val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Confirm delete")
-                .setMessage("Are you sure you want to delete all? ")
-                .setPositiveButton("Yes"){
-                    p0, p1 ->
+        if (item.itemId == R.id.action_delete) {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Confirm delete")
+                .setMessage("Are you sure you want to delete all?")
+                .setPositiveButton("Yes") { _, _ ->
                     viewModel.deleteAll()
                     Toast.makeText(requireContext(), "Items deleted", Toast.LENGTH_SHORT).show()
                 }.show()
-            //p0 - dialog himself , p1 - the id of the button
         }
         return super.onOptionsItemSelected(item)
     }
@@ -144,7 +141,5 @@ class AllItemsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-
     }
 }
-

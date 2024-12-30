@@ -18,6 +18,7 @@ class ItemAdapter(val items:List<Item>, val callBack: ItemListener)
         fun onEditClicked(position: Int)
     }
 
+    private var filteredItems: MutableList<Item> = items.toMutableList() // Data source for RecyclerView
 
     inner class ItemViewHolder(private val binding : ItemLayoutBinding)
         : RecyclerView.ViewHolder(binding.root), View.OnClickListener, View.OnLongClickListener{
@@ -50,16 +51,26 @@ class ItemAdapter(val items:List<Item>, val callBack: ItemListener)
             }
         }
 
-    fun itemAt(position : Int) = items[position]
+    fun itemAt(position : Int) = filteredItems[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ItemViewHolder(ItemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false))
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) =
-        holder.bind(items[position])
+        holder.bind(filteredItems[position])
 
     override fun getItemCount() =
-        items.size
+        filteredItems.size
+
+    // Method to filter movies based on a query
+    fun filterByTitle(query: String) {
+        filteredItems = if (query.isEmpty()) {
+            items.toMutableList()
+        } else {
+            items.filter { it.title.contains(query, ignoreCase = true) }.toMutableList()
+        }
+        notifyDataSetChanged()
+    }
 }
 
 
