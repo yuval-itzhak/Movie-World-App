@@ -51,6 +51,8 @@ class AddItemFragment : Fragment() {
         pickImageLauncher = registerForActivityResult(ActivityResultContracts.OpenDocument()) {
             binding.resultImage.setImageURI(it)
             if (it != null) {
+                binding.resultImage.setImageURI(it)
+                binding.resultImage.visibility = View.VISIBLE // Make it visible after picking an image
                 requireActivity().contentResolver.takePersistableUriPermission(
                     it,
                     Intent.FLAG_GRANT_READ_URI_PERMISSION
@@ -58,6 +60,8 @@ class AddItemFragment : Fragment() {
             }
             imageUri = it
         }
+
+        binding.resultImage.visibility = View.INVISIBLE
 
         // Setup RecyclerView
         setupRecyclerView()
@@ -170,11 +174,10 @@ class AddItemFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val genres = listOf("Action", "Comedy", "Drama", "Sci-Fi", "Horror")
+        val genres = listOf("Action", "Comedy", "Drama", "Sci-Fi", "Horror","Romantic", "Documentary", "Musical", "Other")
 
         genreAdapter = GenreAdapter(genres, object : GenreAdapter.OnGenreClickListener {
             override fun onGenreClick(genre: String) {
-                binding.genreSelection.setText("Genre: $genre")
             }
         })
 
