@@ -178,6 +178,7 @@ class AddItemFragment : Fragment() {
 
         genreAdapter = GenreAdapter(genres, object : GenreAdapter.OnGenreClickListener {
             override fun onGenreClick(genre: String) {
+                binding.genreSelection.setText(genre)
             }
         })
 
