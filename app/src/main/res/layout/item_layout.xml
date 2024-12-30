@@ -38,6 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Movie Name"
+                android:layout_gravity="start"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
@@ -47,6 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Genre: Action"
+                android:layout_gravity="start"
                 android:textSize="16sp"
                 android:layout_marginTop="6dp"
                 android:textColor="#555555" />
@@ -56,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Year: 2023"
+                android:layout_gravity="start"
                 android:textSize="16sp"
                 android:layout_marginTop="4dp"
                 android:textColor="#555555" />
@@ -68,24 +71,17 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <ImageButton
-                android:id="@+id/info_button"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/baseline_error_outline_24"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Info Button"
-                app:tint="#FFC107" />
 
             <ImageButton
                 android:id="@+id/edit_button"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_gravity="end"
                 android:src="@drawable/baseline_movie_edit_24"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Edit Button"
                 android:layout_marginTop="8dp"
-                app:tint="#FFC107" />
+                app:tint="#100E47" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

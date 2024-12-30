@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.architectureproject.R
 import com.example.architectureproject.databinding.AllItemsLayoutBinding
 import com.example.architectureproject.ui.ItemsViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class AllItemsFragment : Fragment() {
 
@@ -42,6 +43,8 @@ class AllItemsFragment : Fragment() {
         _binding = AllItemsLayoutBinding.inflate(inflater, container, false)
 
         setupSearchBar()
+
+
 
         binding.fab.setOnClickListener {
             viewModel.clearChosenItem() // Clear any previously selected item
@@ -138,6 +141,23 @@ class AllItemsFragment : Fragment() {
     //כדי לקבל את האירוע של הלחיצה על הפח אשפה (על הmenu)
     @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.info_button){
+            val snackbar = Snackbar.make(
+                binding.root,
+                "Swipe for delete a movie\nLong click for more details",
+                Snackbar.LENGTH_INDEFINITE // Use INDEFINITE duration
+            )
+            snackbar.setAction("DISMISS") {
+                snackbar.dismiss() // Allow manual dismissal
+            }
+            // Auto-dismiss after a delay (e.g., 5 seconds)
+            val handler = android.os.Handler()
+            handler.postDelayed({
+                snackbar.dismiss()
+            }, 5000) // 5000 ms = 5 seconds
+            snackbar.show()
+
+        }
         if (item.itemId == R.id.action_delete){
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("Confirm delete")

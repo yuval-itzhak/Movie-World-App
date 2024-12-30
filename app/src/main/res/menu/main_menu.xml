@@ -6,4 +6,12 @@
         android:title="Delete all"
         android:icon="@drawable/baseline_delete_outline_24"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/info_button"
+        android:title="More information"
+        android:icon="@drawable/baseline_error_outline_24"
+        android:layout_gravity="end"
+        app:showAsAction="always"/>
+
 </menu>
