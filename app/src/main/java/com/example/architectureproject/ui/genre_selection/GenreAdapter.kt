@@ -1,39 +1,39 @@
 package com.example.architectureproject.ui.genre_selection
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.architectureproject.databinding.ItemGenreBinding
-//import com.example.myapp.databinding.ItemGenreBinding
+import com.example.architectureproject.R
 
 class GenreAdapter(
     private val genres: List<String>,
     private val listener: OnGenreClickListener
 ) : RecyclerView.Adapter<GenreAdapter.GenreViewHolder>() {
 
+    interface OnGenreClickListener {
+        fun onGenreClick(genre: String)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreViewHolder {
-        val binding = ItemGenreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return GenreViewHolder(binding)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_genre, parent, false)
+        return GenreViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: GenreViewHolder, position: Int) {
         val genre = genres[position]
-        holder.bind(genre, listener)
-    }
-
-    override fun getItemCount(): Int = genres.size
-
-    class GenreViewHolder(private val binding: ItemGenreBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(genre: String, listener: OnGenreClickListener) {
-            binding.genreTextView.text = genre
-            binding.root.setOnClickListener {
-                listener.onGenreClick(genre)
-            }
+        holder.genreTextView.text = genre
+        holder.itemView.setOnClickListener {
+            listener.onGenreClick(genre)
         }
     }
 
-    interface OnGenreClickListener {
-        fun onGenreClick(genre: String)
+    override fun getItemCount(): Int {
+        return genres.size
+    }
+
+    class GenreViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val genreTextView: TextView = itemView.findViewById(R.id.genreTextView)
     }
 }

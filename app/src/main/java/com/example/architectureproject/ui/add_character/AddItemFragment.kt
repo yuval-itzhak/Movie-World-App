@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -63,6 +64,7 @@ class AddItemFragment : Fragment() {
         val chosenItem = viewModel.chosenItem.value
         chosenItem?.let { item ->
             binding.itemTitle.setText(item.title)
+            binding.genreSelection.setText(item.genre)
             binding.itemDirector.setText(item.director)
             binding.itemWriter.setText(item.writer)
             binding.itemStars.setText(item.stars)
@@ -75,6 +77,7 @@ class AddItemFragment : Fragment() {
         // Handle Finish button
         binding.finishBtn.setOnClickListener {
             val title = binding.itemTitle.text.toString()
+            val genre = binding.genreSelection.text.toString()
             val director = binding.itemDirector.text.toString()
             val writer = binding.itemWriter.text.toString()
             val stars = binding.itemStars.text.toString()
@@ -82,10 +85,12 @@ class AddItemFragment : Fragment() {
             val description = binding.itemDescription.text.toString()
             val photo = imageUri?.toString()
 
+
             if (chosenItem != null) {
                 // Update existing item
                 val updatedItem = chosenItem.copy(
                     title = title,
+                    genre = genre,
                     director = director,
                     writer = writer,
                     stars = stars,
@@ -98,6 +103,7 @@ class AddItemFragment : Fragment() {
                 // Add new item
                 val newItem = Item(
                     title = title,
+                    genre = genre,
                     director = director,
                     writer = writer,
                     stars = stars,
@@ -120,15 +126,14 @@ class AddItemFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        // Initialize the adapter with sample data and a click listener
         val genres = listOf("Action", "Comedy", "Drama", "Sci-Fi", "Horror")
-        val genreAdapter = GenreAdapter(genres, object : GenreAdapter.OnGenreClickListener {
+
+        genreAdapter = GenreAdapter(genres, object : GenreAdapter.OnGenreClickListener {
             override fun onGenreClick(genre: String) {
                 binding.genreSelection.setText("Selected genre: $genre")
             }
         })
 
-        // Setup RecyclerView
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = genreAdapter
