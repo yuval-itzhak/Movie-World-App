@@ -30,6 +30,7 @@ class AllItemsFragment : Fragment() {
     private val viewModel: ItemsViewModel by activityViewModels()
     private lateinit var adapter: ItemAdapter // Adapter with filtering capability
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,12 +41,15 @@ class AllItemsFragment : Fragment() {
 
         _binding = AllItemsLayoutBinding.inflate(inflater, container, false)
 
+        setupSearchBar()
+
         binding.fab.setOnClickListener {
             viewModel.clearChosenItem() // Clear any previously selected item
             findNavController().navigate(R.id.action_allItemsFragment_to_addItemFragment)
         }
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -110,6 +114,19 @@ class AllItemsFragment : Fragment() {
             }
         }).attachToRecyclerView(binding.recycle)
     }
+
+    private fun setupSearchBar() {
+        binding.searchInput.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                adapter.filterByTitle(s.toString()) // Call the filter function of the adapter
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+    }
+
 
 
     @Deprecated("Deprecated in Java")

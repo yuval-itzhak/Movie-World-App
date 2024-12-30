@@ -12,6 +12,8 @@ import com.bumptech.glide.Glide
 class ItemAdapter(val items:List<Item>, val callBack: ItemListener)
     : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(){
 
+    private var filteredItems: MutableList<Item> = items.toMutableList()
+
     interface ItemListener {
 //        fun onItemClicked(position: Int)
         fun onItemLongClicked(position: Int)
@@ -49,16 +51,25 @@ class ItemAdapter(val items:List<Item>, val callBack: ItemListener)
             }
         }
 
-    fun itemAt(position : Int) = items[position]
+    fun itemAt(position : Int) = filteredItems[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ItemViewHolder(ItemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false))
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) =
-        holder.bind(items[position])
+        holder.bind(filteredItems[position])
 
     override fun getItemCount() =
-        items.size
+        filteredItems.size
+
+    fun filterByTitle(query: String) {
+        filteredItems = if (query.isEmpty()) {
+            items.toMutableList()
+        } else {
+            items.filter { it.title.contains(query, ignoreCase = true) }.toMutableList()
+        }
+        notifyDataSetChanged()
+    }
 }
 
 
