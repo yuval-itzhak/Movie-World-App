@@ -3,25 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     app:cardUseCompatPadding="true"
     app:contentPadding="10dp"
-    app:cardCornerRadius="10dp"
-    android:elevation="4dp">
+    app:cardCornerRadius="12dp"
+    android:background="#FFFFFF"
+    android:elevation="6dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="12dp">
 
+        <!-- Movie Thumbnail -->
         <ImageView
             android:id="@+id/item_image"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/ic_launcher_background"
             android:contentDescription="Item image"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:background="@drawable/image_border" />
 
+        <!-- Movie Details -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -30,33 +35,58 @@
             android:layout_marginStart="16dp">
 
             <TextView
-                android:id="@+id/item_title"
+                android:id="@+id/movie_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Main item title"
+                android:text="Movie Name"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/black" />
+                android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/item_description"
+                android:id="@+id/movie_genre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Item details description"
+                android:text="Genre: Action"
                 android:textSize="16sp"
                 android:layout_marginTop="6dp"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="#555555" />
 
+            <TextView
+                android:id="@+id/movie_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Year: 2023"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp"
+                android:textColor="#555555" />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/edit_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/baseline_movie_edit_24"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Edit Button"
-            android:layout_gravity="center_vertical" />
-    </LinearLayout>
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
 
+            <ImageButton
+                android:id="@+id/info_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/baseline_error_outline_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Info Button"
+                app:tint="#FFC107" />
+
+            <ImageButton
+                android:id="@+id/edit_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/baseline_movie_edit_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Edit Button"
+                android:layout_marginTop="8dp"
+                app:tint="#FFC107" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

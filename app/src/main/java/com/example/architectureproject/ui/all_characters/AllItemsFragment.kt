@@ -46,15 +46,15 @@ class AllItemsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.getString("title")?.let {
-            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
-        }
+//        arguments?.getString("title")?.let {
+//            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
+//        }
 
         viewModel.items?.observe(viewLifecycleOwner) { itemList ->
             adapter = ItemAdapter(itemList, object : ItemAdapter.ItemListener {
-                override fun onItemClicked(position: Int) {
-                    Toast.makeText(requireContext(), "${itemList[position]}", Toast.LENGTH_SHORT).show()
-                }
+//                override fun onItemClicked(position: Int) {
+//                    Toast.makeText(requireContext(), "${itemList[position]}", Toast.LENGTH_SHORT).show()
+//                }
 
                 override fun onItemLongClicked(position: Int) {
                     val item = itemList[position]
