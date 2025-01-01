@@ -1,122 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.add_character.AddItemFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Add New Movie:"
-    android:textSize="40sp"
-    android:layout_margin="20dp"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:padding="10dp"
-    android:textStyle="bold"/>
 
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense">
-        <com.google.android.material.textfield.TextInputEditText
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".ui.add_character.AddItemFragment">
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter movie name"
-            android:id="@+id/item_title"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Add New Movie:"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense">
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter movie name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter director`s name"
-            android:id="@+id/item_director"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_margin="0dp"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:padding="8dp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense">
-        <com.google.android.material.textfield.TextInputEditText
+        <TextView
+            android:id="@+id/genre_selection"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter writer`s name"
-            android:id="@+id/item_writer"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="10dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense">
-        <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/item_director"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter director`s name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter main stars"
-            android:id="@+id/item_stars"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="10dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense">
-        <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/item_writer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter writer`s name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter release year"
-            android:inputType="number"
-            android:id="@+id/item_release"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="10dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense">
-        <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/item_stars"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter main stars" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter movie Description"
-            android:id="@+id/item_description"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="10dp">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/item_release"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter release year (4 digits format)"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:text="Pick Image"
-        android:id="@+id/image_btn" />
-    
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/ic_launcher_background"
-        android:id="@+id/result_image"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Finish"
-        android:id="@+id/finish_btn"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
-</LinearLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/item_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter movie Description" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <!-- Pick Image Button -->
+            <Button
+                android:id="@+id/image_btn"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Select poster"
+                android:gravity="center" />
+
+            <!-- Result Image -->
+            <ImageView
+                android:id="@+id/result_image"
+                android:layout_width="130dp"
+                android:layout_height="260dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/finish_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="Add movie" />
+    </LinearLayout>
+
 </ScrollView>

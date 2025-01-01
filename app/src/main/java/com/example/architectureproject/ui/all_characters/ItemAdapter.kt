@@ -12,30 +12,31 @@ import com.bumptech.glide.Glide
 class ItemAdapter(val items:List<Item>, val callBack: ItemListener)
     : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(){
 
+    private var filteredItems: MutableList<Item> = items.toMutableList()
+
     interface ItemListener {
-        fun onItemClicked(position: Int)
+//        fun onItemClicked(position: Int)
         fun onItemLongClicked(position: Int)
         fun onEditClicked(position: Int)
     }
 
 
     inner class ItemViewHolder(private val binding : ItemLayoutBinding)
-        : RecyclerView.ViewHolder(binding.root), View.OnClickListener, View.OnLongClickListener{
+        : RecyclerView.ViewHolder(binding.root), View.OnLongClickListener{
 
             init {
-                binding.root.setOnClickListener(this)
+//                binding.root.setOnClickListener(this)
                 binding.root.setOnLongClickListener(this)
 
-                // מאזין לכפתור עריכה
                 binding.editButton.setOnClickListener {
-                    callBack.onEditClicked(adapterPosition) // קריאה לקולבק עם מיקום הפריט
+                    callBack.onEditClicked(adapterPosition)
                 }
             }
 
 
-        override fun onClick(p0: View?) {
-            callBack.onItemClicked(adapterPosition)
-        }
+//        override fun onClick(p0: View?) {
+//            callBack.onItemClicked(adapterPosition)
+//        }
 
         override fun onLongClick(p0: View?): Boolean {
             callBack.onItemLongClicked(adapterPosition)
@@ -43,23 +44,32 @@ class ItemAdapter(val items:List<Item>, val callBack: ItemListener)
         }
 
         fun bind(item : Item){
-                binding.itemTitle.text = item.title
-                binding.itemDescription.text = item.description
-                //binding.itemImage.setImageURI(Uri.parse(item.photo))לא מומלץ הגלילת תמונות תיהיה איטית
+                binding.movieName.text = item.title
+                binding.movieYear.text = item.release.toString()
+                binding.movieGenre.text = item.genre
                 Glide.with(binding.root).load(item.photo).circleCrop().into(binding.itemImage)
             }
         }
 
-    fun itemAt(position : Int) = items[position]
+    fun itemAt(position : Int) = filteredItems[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ItemViewHolder(ItemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false))
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) =
-        holder.bind(items[position])
+        holder.bind(filteredItems[position])
 
     override fun getItemCount() =
-        items.size
+        filteredItems.size
+
+    fun filterByTitle(query: String) {
+        filteredItems = if (query.isEmpty()) {
+            items.toMutableList()
+        } else {
+            items.filter { it.title.contains(query, ignoreCase = true) }.toMutableList()
+        }
+        notifyDataSetChanged()
+    }
 }
 
 

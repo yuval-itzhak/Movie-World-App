@@ -57,14 +57,6 @@
                 android:inputType="text"
                 android:padding="8dp" />
 
-            <ImageButton
-                android:id="@+id/search_button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:contextClickable="true"
-                android:src="@drawable/baseline_manage_search_24"
-                android:contentDescription="Search"
-                android:background="?attr/selectableItemBackgroundBorderless" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
