@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -24,7 +25,6 @@ import com.example.architectureproject.ui.genre_selection.GenreAdapter
 class AddMovieFragment : Fragment() {
 
 
-
     private var _binding: AddMovieLayoutBinding? = null
     private val binding get() = _binding!!
 
@@ -35,12 +35,21 @@ class AddMovieFragment : Fragment() {
 
     private lateinit var genreAdapter: GenreAdapter
 
+    private lateinit var textView: TextView
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = AddMovieLayoutBinding.inflate(inflater, container, false)
+        textView = binding.newOrEditMovie
+
+        val newText = arguments?.getString("keyText")
+
+        newText?.let {
+            textView.text = it
+        }
         return binding.root
     }
 

@@ -74,8 +74,11 @@ class AllMoviesFragment : Fragment() {
 
                 override fun onEditClicked(position: Int) {
                     val movie = movieList[position]
+                    val bundle = Bundle().apply {
+                        putString("keyText", "Edit Movie:")
+                    }
                     viewModel.setMovie(movie) // Pass the selected item to ViewModel for editing
-                    findNavController().navigate(R.id.action_allMoviesFragment_to_addMovieFragment)
+                    findNavController().navigate(R.id.action_allMoviesFragment_to_addMovieFragment, bundle)
                 }
             })
             binding.recycle.adapter = adapter
