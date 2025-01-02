@@ -57,7 +57,7 @@ class AllMoviesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 //        arguments?.getString("title")?.let {
-//            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show() TODO: delete commented code before submission (part of the requirements)
 //        }
 
         viewModel.items?.observe(viewLifecycleOwner) { movieList ->

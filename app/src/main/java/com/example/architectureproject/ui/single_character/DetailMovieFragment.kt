@@ -26,16 +26,15 @@ class DetailMovieFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //TODO: Add animations
         super.onViewCreated(view, savedInstanceState)
-        viewModel.chosenMovie.observe(viewLifecycleOwner){//it:movie
+        viewModel.chosenMovie.observe(viewLifecycleOwner){
             binding.movieTitle.text = "Title: ${it?.title}" //TODO: take care of the warnings (add string resource file with translations)
             binding.movieGenre.text = "Genre: ${it?.genre}"
             binding.movieDirector.text = "Director: ${it?.director}"
             binding.movieWriter.text = "Writer: ${it?.writer}"
             binding.movieStars.text = "Stars: ${it?.stars}"
-            binding.movieRelease.text = "Release: ${it?.release.toString()}"
-
+            binding.movieRelease.text = "Release year: ${it?.release.toString()}"
             binding.movieDescription.text = it?.description
             Glide.with(requireContext()).load(it?.photo).into(binding.movieImage)
         }
