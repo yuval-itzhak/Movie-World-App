@@ -13,6 +13,7 @@
         tools:context=".ui.add_character.AddMovieFragment">
 
         <TextView
+            android:id="@+id/new_or_edit_movie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
