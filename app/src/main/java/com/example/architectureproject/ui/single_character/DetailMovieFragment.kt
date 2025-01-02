@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
-import com.example.architectureproject.databinding.DetailItemLayoutBinding
-import com.example.architectureproject.ui.ItemsViewModel
+import com.example.architectureproject.databinding.DetailMovieLayoutBinding
+import com.example.architectureproject.ui.MoviesViewModel
 
 
-class DetailItemFragment : Fragment() {
+class DetailMovieFragment : Fragment() {
 
-    val viewModel : ItemsViewModel by activityViewModels()
-    var _binding : DetailItemLayoutBinding? = null
+    val viewModel : MoviesViewModel by activityViewModels()
+    var _binding : DetailMovieLayoutBinding? = null
 
     val binding get() = _binding!!
     override fun onCreateView(
@@ -22,17 +22,16 @@ class DetailItemFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = DetailItemLayoutBinding.inflate(inflater, container, false)
+        _binding = DetailMovieLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.chosenItem.observe(viewLifecycleOwner){//it:item
-            binding.itemTitle.text = it?.title
-            binding.itemDescription.text = it?.description
-            Glide.with(requireContext()).load(it?.photo).into(binding.itemImage)
-
+        viewModel.chosenMovie.observe(viewLifecycleOwner){//it:movie
+            binding.movieTitle.text = it?.title
+            binding.movieDescription.text = it?.description
+            Glide.with(requireContext()).load(it?.photo).into(binding.movieImage)
         }
     }
 

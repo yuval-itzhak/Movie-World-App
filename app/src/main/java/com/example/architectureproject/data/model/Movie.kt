@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 
 
 //@Parcelize
-@Entity(tableName = "items")
-data class Item(
+@Entity(tableName = "movies")
+data class Movie(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int  = 0,
     @ColumnInfo(name = "content")
     val title:String,

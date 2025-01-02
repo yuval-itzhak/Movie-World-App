@@ -5,7 +5,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -19,17 +18,17 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.architectureproject.R
-import com.example.architectureproject.databinding.AllItemsLayoutBinding
-import com.example.architectureproject.ui.ItemsViewModel
+import com.example.architectureproject.databinding.AllMoviesLayoutBinding
+import com.example.architectureproject.ui.MoviesViewModel
 import com.google.android.material.snackbar.Snackbar
 
-class AllItemsFragment : Fragment() {
+class AllMoviesFragment : Fragment() {
 
-    private var _binding: AllItemsLayoutBinding? = null
+    private var _binding: AllMoviesLayoutBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: ItemsViewModel by activityViewModels()
-    private lateinit var adapter: ItemAdapter // Adapter with filtering capability
+    private val viewModel: MoviesViewModel by activityViewModels()
+    private lateinit var adapter: MovieAdapter // Adapter with filtering capability
 
 
     override fun onCreateView(
@@ -40,15 +39,15 @@ class AllItemsFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        _binding = AllItemsLayoutBinding.inflate(inflater, container, false)
+        _binding = AllMoviesLayoutBinding.inflate(inflater, container, false)
 
         setupSearchBar()
 
 
 
         binding.fab.setOnClickListener {
-            viewModel.clearChosenItem() // Clear any previously selected item
-            findNavController().navigate(R.id.action_allItemsFragment_to_addItemFragment)
+            viewModel.clearChosenMovie() // Clear any previously selected item
+            findNavController().navigate(R.id.action_allMoviesFragment_to_addMovieFragment)
         }
         return binding.root
     }
@@ -61,22 +60,22 @@ class AllItemsFragment : Fragment() {
 //            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
 //        }
 
-        viewModel.items?.observe(viewLifecycleOwner) { itemList ->
-            adapter = ItemAdapter(itemList, object : ItemAdapter.ItemListener {
+        viewModel.items?.observe(viewLifecycleOwner) { movieList ->
+            adapter = MovieAdapter(movieList, object : MovieAdapter.MovieListener {
 //                override fun onItemClicked(position: Int) {
 //                    Toast.makeText(requireContext(), "${itemList[position]}", Toast.LENGTH_SHORT).show()
 //                }
 
-                override fun onItemLongClicked(position: Int) {
-                    val item = itemList[position]
-                    viewModel.setItem(item)
-                    findNavController().navigate(R.id.action_allItemsFragment_to_detailItemFragment)
+                override fun onMovieLongClicked(position: Int) {
+                    val movie = movieList[position]
+                    viewModel.setMovie(movie)
+                    findNavController().navigate(R.id.action_allMoviesFragment_to_detailMovieFragment)
                 }
 
                 override fun onEditClicked(position: Int) {
-                    val item = itemList[position]
-                    viewModel.setItem(item) // Pass the selected item to ViewModel for editing
-                    findNavController().navigate(R.id.action_allItemsFragment_to_addItemFragment)
+                    val movie = movieList[position]
+                    viewModel.setMovie(movie) // Pass the selected item to ViewModel for editing
+                    findNavController().navigate(R.id.action_allMoviesFragment_to_addMovieFragment)
                 }
             })
             binding.recycle.adapter = adapter
@@ -97,21 +96,21 @@ class AllItemsFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val item = (binding.recycle.adapter as ItemAdapter).itemAt(position)
+                val movie = (binding.recycle.adapter as MovieAdapter).movieAt(position)
 
                 AlertDialog.Builder(requireContext())
                     .setTitle("Confirm Deletion")
-                    .setMessage("Are you sure you want to delete this item?")
+                    .setMessage("Are you sure you want to delete this movie?")
                     .setPositiveButton("Yes") { _, _ ->
-                        viewModel.deleteItem(item)
-                        Toast.makeText(requireContext(), "Item deleted", Toast.LENGTH_SHORT).show()
+                        viewModel.deleteMovie(movie)
+                        Toast.makeText(requireContext(), "Movie deleted", Toast.LENGTH_SHORT).show()
                     }
                     .setNegativeButton("No") { _, _ ->
-                        (binding.recycle.adapter as ItemAdapter).notifyItemChanged(position)
-                        Toast.makeText(requireContext(), "Item not deleted", Toast.LENGTH_SHORT).show()
+                        (binding.recycle.adapter as MovieAdapter).notifyItemChanged(position)
+                        Toast.makeText(requireContext(), "Movie not deleted", Toast.LENGTH_SHORT).show()
                     }
                     .setOnCancelListener {
-                        (binding.recycle.adapter as ItemAdapter).notifyItemChanged(position)
+                        (binding.recycle.adapter as MovieAdapter).notifyItemChanged(position)
                     }
                     .show()
             }
@@ -165,7 +164,7 @@ class AllItemsFragment : Fragment() {
                 .setPositiveButton("Yes"){
                     p0, p1 ->
                     viewModel.deleteAll()
-                    Toast.makeText(requireContext(), "Items deleted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Movies deleted", Toast.LENGTH_SHORT).show()
                 }.show()
         }
         return super.onOptionsItemSelected(item)

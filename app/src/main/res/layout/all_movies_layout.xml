@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.all_characters.AllItemsFragment">
+    tools:context=".ui.all_characters.AllMoviesFragment">
 
     <!-- Welcome Card -->
     <androidx.cardview.widget.CardView
@@ -70,7 +70,7 @@
         app:layout_constraintBottom_toTopOf="@id/fab"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_layout" />
+        tools:listitem="@layout/movie_layout" />
 
     <!-- Floating Action Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

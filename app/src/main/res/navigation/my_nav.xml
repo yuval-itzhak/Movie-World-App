@@ -3,46 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/allItemsFragment">
+    app:startDestination="@id/allMoviesFragment">
 
     <fragment
-        android:id="@+id/allItemsFragment"
-        android:name="com.example.architectureproject.ui.all_characters.AllItemsFragment"
-        android:label="all_items_layout"
-        tools:layout="@layout/all_items_layout" >
+        android:id="@+id/allMoviesFragment"
+        android:name="com.example.architectureproject.ui.all_characters.AllMoviesFragment"
+        android:label="all_movies_layout"
+        tools:layout="@layout/all_movies_layout" >
         <action
-            android:id="@+id/action_allItemsFragment_to_addItemFragment"
-            app:destination="@id/addItemFragment"
+            android:id="@+id/action_allMoviesFragment_to_addMovieFragment"
+            app:destination="@id/addMovieFragment"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right" />
         <action
-            android:id="@+id/action_allItemsFragment_to_detailItemFragment"
-            app:destination="@id/detailItemFragment" />
+            android:id="@+id/action_allMoviesFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addItemFragment"
-        android:name="com.example.architectureproject.ui.add_character.AddItemFragment"
-        android:label="add_item_layout"
-        tools:layout="@layout/add_item_layout" >
+        android:id="@+id/addMovieFragment"
+        android:name="com.example.architectureproject.ui.add_character.AddMovieFragment"
+        android:label="add_movie_layout"
+        tools:layout="@layout/add_movie_layout" >
         <action
-            android:id="@+id/action_addItemFragment_to_allItemsFragment"
-            app:destination="@id/allItemsFragment"
+            android:id="@+id/action_addMovieFragment_to_allMoviesFragment"
+            app:destination="@id/allMoviesFragment"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right"
-            app:popUpTo="@id/allItemsFragment"
+            app:popUpTo="@id/allMoviesFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/detailItemFragment"
-        android:name="com.example.architectureproject.ui.single_character.DetailItemFragment"
-        android:label="detail_item_layout"
-        tools:layout="@layout/detail_item_layout" >
+        android:id="@+id/detailMovieFragment"
+        android:name="com.example.architectureproject.ui.single_character.DetailMovieFragment"
+        android:label="detail_movie_layout"
+        tools:layout="@layout/detail_movie_layout" >
         <action
-            android:id="@+id/action_detailItemFragment_to_allItemsFragment"
-            app:destination="@id/allItemsFragment" />
+            android:id="@+id/action_detailMovieFragment_to_allMoviesFragment"
+            app:destination="@id/allMoviesFragment" />
     </fragment>
 </navigation>

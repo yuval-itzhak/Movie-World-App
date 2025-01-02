@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="30dp"
     android:background="#cacb"
-    tools:context=".ui.single_character.DetailItemFragment">
+    tools:context=".ui.single_character.DetailMovieFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item_title"
+                    android:id="@+id/movie_title"
                     android:gravity="center"
                     android:textSize="30sp"
                     android:layout_margin="20dp"
@@ -42,7 +42,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item_description"
+                    android:id="@+id/movie_description"
                     android:gravity="center"
                     android:textSize="17sp"
                     android:layout_margin="20dp"
@@ -51,7 +51,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item_image"
+                    android:id="@+id/movie_image"
                     android:layout_margin="15dp"
                     android:minHeight="200dp"
                     android:adjustViewBounds="true"

@@ -19,7 +19,7 @@ class GenreAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_genre, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_genre, parent, false)
         return GenreViewHolder(view)
     }
 

@@ -6,16 +6,16 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.architectureproject.data.model.Item
+import com.example.architectureproject.data.model.Movie
 
-@Database(entities = [Item::class], version = 4, exportSchema = false)
-abstract class ItemDataBase : RoomDatabase() {
+@Database(entities = [Movie::class], version = 5, exportSchema = false)
+abstract class MovieDataBase : RoomDatabase() {
 
-    abstract fun itemDao(): ItemDao
+    abstract fun movieDao(): MovieDao
 
     companion object {
         @Volatile
-        private var instance: ItemDataBase? = null
+        private var instance: MovieDataBase? = null
 
         // Migration from version 1 to 2
         private val MIGRATION_1_2 = object : Migration(1, 2) {
@@ -37,15 +37,21 @@ abstract class ItemDataBase : RoomDatabase() {
                 database.execSQL("ALTER TABLE items ADD COLUMN genre TEXT NOT NULL DEFAULT ''")
             }
         }
+        private val MIGRATION_4_5 = object : Migration(4, 5) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                // remane database name
+                database.execSQL("ALTER TABLE items ADD COLUMN genre TEXT NOT NULL DEFAULT ''")
+            }
+        }
 
-        fun getDataBase(context: Context): ItemDataBase {
+        fun getDataBase(context: Context): MovieDataBase {
             return instance ?: synchronized(this) {
                 Room.databaseBuilder(
                     context.applicationContext,
-                    ItemDataBase::class.java,
-                    "items_db"
+                    MovieDataBase::class.java,
+                    "movies_db"
                 )
-                    .addMigrations(MIGRATION_3_4) // Add all migrations
+                    .addMigrations(MIGRATION_4_5) // Add all migrations
                     .build().also { instance = it }
             }
         }

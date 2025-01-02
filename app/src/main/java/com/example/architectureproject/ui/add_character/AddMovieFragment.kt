@@ -15,20 +15,20 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.architectureproject.R
-import com.example.architectureproject.data.model.Item
-import com.example.architectureproject.databinding.AddItemLayoutBinding
-import com.example.architectureproject.ui.ItemsViewModel
+import com.example.architectureproject.data.model.Movie
+import com.example.architectureproject.databinding.AddMovieLayoutBinding
+import com.example.architectureproject.ui.MoviesViewModel
 import com.example.architectureproject.ui.genre_selection.GenreAdapter
 
 
-class AddItemFragment : Fragment() {
+class AddMovieFragment : Fragment() {
 
 
 
-    private var _binding: AddItemLayoutBinding? = null
+    private var _binding: AddMovieLayoutBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: ItemsViewModel by activityViewModels()
+    private val viewModel: MoviesViewModel by activityViewModels()
 
     private var imageUri: Uri? = null
     private lateinit var pickImageLauncher: ActivityResultLauncher<Array<String>>
@@ -40,7 +40,7 @@ class AddItemFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = AddItemLayoutBinding.inflate(inflater, container, false)
+        _binding = AddMovieLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -67,28 +67,28 @@ class AddItemFragment : Fragment() {
         setupRecyclerView()
 
         // Prefill fields if editing an existing item
-        val chosenItem = viewModel.chosenItem.value
-        chosenItem?.let { item ->
-            binding.itemTitle.setText(item.title)
-            binding.genreSelection.setText(item.genre)
-            binding.itemDirector.setText(item.director)
-            binding.itemWriter.setText(item.writer)
-            binding.itemStars.setText(item.stars)
-            binding.itemRelease.setText(item.release.toString())
-            binding.itemDescription.setText(item.description)
-            imageUri = item.photo?.let { Uri.parse(it) }
+        val chosenMovie = viewModel.chosenMovie.value
+        chosenMovie?.let { movie ->
+            binding.movieTitle.setText(movie.title)
+            binding.genreSelection.setText(movie.genre)
+            binding.movieDirector.setText(movie.director)
+            binding.movieWriter.setText(movie.writer)
+            binding.movieStars.setText(movie.stars)
+            binding.movieRelease.setText(movie.release.toString())
+            binding.movieDescription.setText(movie.description)
+            imageUri = movie.photo?.let { Uri.parse(it) }
             binding.resultImage.setImageURI(imageUri)
         }
 
         // Handle Finish button
         binding.finishBtn.setOnClickListener {
-            val title = binding.itemTitle.text.toString()
+            val title = binding.movieTitle.text.toString()
             val genre = binding.genreSelection.text.toString()
-            val director = binding.itemDirector.text.toString()
-            val writer = binding.itemWriter.text.toString()
-            val stars = binding.itemStars.text.toString()
-            val release = binding.itemRelease.text.toString().trim()
-            val description = binding.itemDescription.text.toString()
+            val director = binding.movieDirector.text.toString()
+            val writer = binding.movieWriter.text.toString()
+            val stars = binding.movieStars.text.toString()
+            val release = binding.movieRelease.text.toString().trim()
+            val description = binding.movieDescription.text.toString()
             val photo = imageUri?.toString()
 
             if (title.isEmpty()) {
@@ -137,8 +137,8 @@ class AddItemFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            if (chosenItem != null) {
-                val updatedItem = chosenItem.copy(
+            if (chosenMovie != null) {
+                val updatedMovie = chosenMovie.copy(
                     title = title,
                     genre = genre,
                     director = director,
@@ -148,9 +148,9 @@ class AddItemFragment : Fragment() {
                     description = description,
                     photo = photo
                 )
-                viewModel.updateItem(updatedItem)
+                viewModel.updateMovie(updatedMovie)
             } else {
-                val newItem = Item(
+                val newMovie = Movie(
                     title = title,
                     genre = genre,
                     director = director,
@@ -160,11 +160,11 @@ class AddItemFragment : Fragment() {
                     description = description,
                     photo = photo
                 )
-                viewModel.addItem(newItem)
+                viewModel.addMovie(newMovie)
             }
 
-            viewModel.clearChosenItem()
-            findNavController().navigate(R.id.action_addItemFragment_to_allItemsFragment)
+            viewModel.clearChosenMovie()
+            findNavController().navigate(R.id.action_addMovieFragment_to_allMoviesFragment)
         }
 
         // Handle Image button

@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context=".ui.add_character.AddItemFragment">
+        tools:context=".ui.add_character.AddMovieFragment">
 
         <TextView
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/item_title"
+                android:id="@+id/movie_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter movie name" />
@@ -57,7 +57,7 @@
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/item_director"
+                android:id="@+id/movie_director"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter director`s name" />
@@ -70,7 +70,7 @@
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/item_writer"
+                android:id="@+id/movie_writer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter writer`s name" />
@@ -83,7 +83,7 @@
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/item_stars"
+                android:id="@+id/movie_stars"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter main stars" />
@@ -96,7 +96,7 @@
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/item_release"
+                android:id="@+id/movie_release"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter release year (4 digits format)"
@@ -110,7 +110,7 @@
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/item_description"
+                android:id="@+id/movie_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter movie Description" />
