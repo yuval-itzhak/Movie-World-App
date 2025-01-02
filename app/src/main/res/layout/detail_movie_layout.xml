@@ -37,7 +37,53 @@
                     android:gravity="center"
                     android:textSize="30sp"
                     android:layout_margin="20dp"
+                    android:hint="Title"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_genre"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_margin="10dp"
+                    android:hint="Genre" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_director"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_margin="10dp"
+                    android:hint="Director"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_writer"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_margin="10dp"
+                    android:hint="Writer"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_stars"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_margin="10dp"
+                    android:hint="Stars"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_release"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_margin="10dp"
+                    android:hint="Release year"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -46,7 +92,8 @@
                     android:gravity="center"
                     android:textSize="17sp"
                     android:layout_margin="20dp"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"
+                    android:hint="Description"/>
 
                 <ImageView
                     android:layout_width="match_parent"

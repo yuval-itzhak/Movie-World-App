@@ -13,10 +13,10 @@ import com.example.architectureproject.ui.MoviesViewModel
 
 class DetailMovieFragment : Fragment() {
 
-    val viewModel : MoviesViewModel by activityViewModels()
+    val viewModel : MoviesViewModel by activityViewModels() //TODO: take care of the warnings (check if it works when those variables are private)
     var _binding : DetailMovieLayoutBinding? = null
 
-    val binding get() = _binding!!
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,7 +29,13 @@ class DetailMovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.chosenMovie.observe(viewLifecycleOwner){//it:movie
-            binding.movieTitle.text = it?.title
+            binding.movieTitle.text = "Title: ${it?.title}" //TODO: take care of the warnings (add string resource file with translations)
+            binding.movieGenre.text = "Genre: ${it?.genre}"
+            binding.movieDirector.text = "Director: ${it?.director}"
+            binding.movieWriter.text = "Writer: ${it?.writer}"
+            binding.movieStars.text = "Stars: ${it?.stars}"
+            binding.movieRelease.text = "Release: ${it?.release.toString()}"
+
             binding.movieDescription.text = it?.description
             Glide.with(requireContext()).load(it?.photo).into(binding.movieImage)
         }
