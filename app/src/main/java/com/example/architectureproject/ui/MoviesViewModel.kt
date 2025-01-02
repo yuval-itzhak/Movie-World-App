@@ -4,8 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.architectureproject.data.repository.MovieRepository
 import com.example.architectureproject.data.model.Movie
+import kotlinx.coroutines.launch
 
 class MoviesViewModel(application : Application) : AndroidViewModel(application) {
 
@@ -14,13 +16,25 @@ class MoviesViewModel(application : Application) : AndroidViewModel(application)
     val items : LiveData<List<Movie>>? = repository.getMovies()
 
     fun addMovie(movie : Movie){
-        repository.addMovie(movie)
+        viewModelScope.launch{
+            repository.addMovie(movie)
+        }
     }
     fun deleteMovie(movie: Movie){
-        repository.deleteMovie(movie)
+        viewModelScope.launch {
+            repository.deleteMovie(movie)
+        }
     }
     fun updateMovie(movie: Movie) {
-        repository.updateMovie(movie)
+        viewModelScope.launch {
+            repository.updateMovie(movie)
+        }
+    }
+
+    fun deleteAll(){
+        viewModelScope.launch {
+            repository.deleteAll()
+        }
     }
 
     //מאפשר לך לשתף את הנתונים בין ה-Fragments
@@ -31,9 +45,6 @@ class MoviesViewModel(application : Application) : AndroidViewModel(application)
         _chosenMovie.value = movie
     }
 
-    fun deleteAll(){
-        repository.deleteAll()
-    }
 
     fun clearChosenMovie() {
         _chosenMovie.value = null

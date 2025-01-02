@@ -13,13 +13,13 @@ import com.example.architectureproject.data.model.Movie
 interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addMovie(movie: Movie)
+    suspend fun addMovie(movie: Movie)
 
     @Delete
-    fun deleteMovie(movie: Movie)
+    suspend fun deleteMovie(movie: Movie)
 
     @Update
-    fun update(movie: Movie)
+    suspend fun update(movie: Movie)
 
     @Query("SELECT * FROM movies ORDER BY content ASC")
     fun getMovies(): LiveData<List<Movie>>
@@ -33,5 +33,5 @@ interface MovieDao {
     fun getMovieByContent(content: String): List<Movie>
 
     @Query("DELETE FROM movies")
-    fun deleteAll()
+    suspend fun deleteAll()
 }

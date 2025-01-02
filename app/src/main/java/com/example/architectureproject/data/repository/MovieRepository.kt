@@ -10,10 +10,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.launch
 
-class MovieRepository(application : Application) : CoroutineScope {
+class MovieRepository(application : Application)  {// : CoroutineScope {
 
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.IO
+//    override val coroutineContext: CoroutineContext
+//        get() = Dispatchers.IO
 
     private var movieDao : MovieDao?
 
@@ -30,29 +30,28 @@ class MovieRepository(application : Application) : CoroutineScope {
         return movieDao?.getMovie(id)
     }
 
-    fun addMovie(movie : Movie){
-        launch {
+    suspend fun addMovie(movie : Movie){
+       // launch {
             movieDao?.addMovie(movie)
-        }
+       // }
     }
 
-    fun deleteMovie(movie : Movie){
-        launch {
+    suspend fun deleteMovie(movie : Movie){
+       // launch {
             movieDao?.deleteMovie(movie)
-        }
+       // }
     }
 
-    fun updateMovie(movie: Movie){
-        launch {
+    suspend fun updateMovie(movie: Movie){
+        //launch {
             movieDao?.update(movie)
-        }
+        //}
     }
 
-    fun deleteAll() {
-        launch {
+    suspend fun deleteAll() {
+//        launch {
             movieDao?.deleteAll()
-        }
+//        }
     }
 
-    
 }
