@@ -28,12 +28,24 @@ class GenreAdapter(
         holder.genreTextView.text = genre
 
         // Update background color based on selection
+        // Default state: all items have background #FFFDE7 and text color black
+        holder.genreTextView.setBackgroundColor(0xFFFDE7.toInt())
+        holder.genreTextView.setTextColor(0xFF000000.toInt()) // Black color for text
+
+        // Highlight selected item
         if (position == selectedPosition) {
-            holder.genreTextView.setBackgroundColor(0xFF6200EE.toInt()) // Highlighted color (purple)
-            holder.genreTextView.setTextColor(0xFFFFFFFF.toInt()) // White text
-        } else {
-            holder.genreTextView.setBackgroundColor(0xA9A9A9.toInt()) // Default color (light gray)
-            holder.genreTextView.setTextColor(0xFF000000.toInt()) // Black text
+            holder.genreTextView.setBackgroundColor(0xFFF5DD42.toInt()) // Yellow background
+            holder.genreTextView.setTextColor(0xFF000000.toInt()) // Black color for text
+        }
+
+        // Handle click event to update selection
+        holder.itemView.setOnClickListener {
+            val previousPosition = selectedPosition
+            selectedPosition = position
+
+            // Notify changes to update UI
+            notifyItemChanged(previousPosition) // Refresh previously selected item
+            notifyItemChanged(selectedPosition) // Refresh newly selected item
         }
 
         // Handle item click
