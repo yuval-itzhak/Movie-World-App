@@ -20,10 +20,13 @@ import com.example.architectureproject.data.model.Movie
 import com.example.architectureproject.databinding.AddMovieLayoutBinding
 import com.example.architectureproject.ui.MoviesViewModel
 import com.example.architectureproject.ui.genre_selection.GenreAdapter
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.KeyEvent
+import android.widget.EditText
 
 
 class AddMovieFragment : Fragment() {
-
 
     private var _binding: AddMovieLayoutBinding? = null
     private val binding get() = _binding!!
@@ -75,6 +78,9 @@ class AddMovieFragment : Fragment() {
         // Setup RecyclerView
         setupRecyclerView()
 
+        // Setup bullet functionality for the "stars" field
+        setupBulletInput(binding.movieStars)
+
         // Prefill fields if editing an existing item
         val chosenMovie = viewModel.chosenMovie.value
         chosenMovie?.let { movie ->
@@ -116,10 +122,6 @@ class AddMovieFragment : Fragment() {
                 Toast.makeText(requireContext(), "Enter writer's name properly", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (!stars.matches(Regex("^[a-zA-Z\\s,]+$"))) {
-                Toast.makeText(requireContext(), "Enter stars' name properly with comma (,) between each name", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
             if (!release.matches(Regex("^\\d{4}$"))) {
                 Toast.makeText(requireContext(), "Enter year with 4 digits only", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -128,7 +130,7 @@ class AddMovieFragment : Fragment() {
             val currentYear = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)
             try {
                 val releaseYear = release.toInt()
-                if (releaseYear > currentYear || releaseYear<1900) {
+                if (releaseYear > currentYear || releaseYear < 1900) {
                     Toast.makeText(requireContext(), "Year must be between 1900-nowadays", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
@@ -183,7 +185,7 @@ class AddMovieFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val genres = listOf("Action", "Comedy", "Drama", "Sci-Fi", "Horror","Romantic", "Documentary", "Musical", "Other")
+        val genres = listOf("Action", "Comedy", "Drama", "Sci-Fi", "Horror", "Romantic", "Documentary", "Musical", "Other")
 
         genreAdapter = GenreAdapter(genres, object : GenreAdapter.OnGenreClickListener {
             override fun onGenreClick(genre: String) {
@@ -200,5 +202,69 @@ class AddMovieFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setupBulletInput(editText: EditText) {
+        editText.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && editText.text.isEmpty()) {
+                editText.setText("• ")
+                editText.setSelection(editText.text.length)
+            } else if (!hasFocus && editText.text.toString().trim() == "•") {
+                editText.text.clear()
+            }
+        }
+
+        editText.setOnKeyListener { _, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN) {
+                val cursorPosition = editText.selectionStart
+                val text = editText.text.toString()
+
+                when (keyCode) {
+                    KeyEvent.KEYCODE_ENTER -> {
+                        if (cursorPosition >= 0 && cursorPosition <= text.length) {
+                            val lineBreak = "\n• "
+                            editText.text.insert(cursorPosition, lineBreak)
+                            editText.setSelection(cursorPosition + lineBreak.length)
+                            return@setOnKeyListener true
+                        }
+                    }
+
+                    KeyEvent.KEYCODE_DEL -> {
+                        if (cursorPosition > 2 && text.substring(cursorPosition - 2, cursorPosition) == "• ") {
+                            editText.text.delete(cursorPosition - 2, cursorPosition)
+                            return@setOnKeyListener true
+                        }
+                    }
+                }
+            }
+            false
+        }
+
+        editText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val text = s.toString()
+                if (text.isNotEmpty()) {
+                    val lines = text.split("\n")
+                    val formattedText = lines.joinToString("\n") { line ->
+                        if (line.isNotBlank() && !line.trim().startsWith("•")) {
+                            "• ${line.trim()}"
+                        } else {
+                            line
+                        }
+                    }
+
+                    if (formattedText != text) {
+                        editText.removeTextChangedListener(this)
+                        editText.setText(formattedText)
+                        editText.setSelection(editText.text.length)
+                        editText.addTextChangedListener(this)
+                    }
+                }
+            }
+        })
     }
 }
