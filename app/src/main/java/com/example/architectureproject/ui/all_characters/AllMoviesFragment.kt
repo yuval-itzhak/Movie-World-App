@@ -28,14 +28,14 @@ class AllMoviesFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: MoviesViewModel by activityViewModels()
-    private lateinit var adapter: MovieAdapter // Adapter with filtering capability
+    lateinit var adapter: MovieAdapter // Adapter with filtering capability
 
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         setHasOptionsMenu(true)
 
@@ -125,7 +125,9 @@ class AllMoviesFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                adapter.filterByTitle(s.toString()) // Call the filter function of the adapter
+                if (s != null && this@AllMoviesFragment::adapter.isInitialized) {
+                    adapter.filterByTitle(s.toString()) // Call the filter function of the adapter
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {}
