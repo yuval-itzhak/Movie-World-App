@@ -176,7 +176,7 @@
                     android:textColor="@color/black"
                     android:backgroundTint="#FFFDE7"
                     android:gravity="center"
-                    android:text="Add movie" />
+                    android:text="Save movie" />
             </LinearLayout>
 
             <ImageView

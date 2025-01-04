@@ -28,7 +28,7 @@ class AllMoviesFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: MoviesViewModel by activityViewModels()
-    lateinit var adapter: MovieAdapter // Adapter with filtering capability
+    lateinit var adapter: MovieAdapter
 
 
     override fun onCreateView(
@@ -56,15 +56,11 @@ class AllMoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        arguments?.getString("title")?.let {
-//            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show() TODO: delete commented code before submission (part of the requirements)
-//        }
+
 
         viewModel.items?.observe(viewLifecycleOwner) { movieList ->
             adapter = MovieAdapter(movieList, object : MovieAdapter.MovieListener {
-//                override fun onItemClicked(position: Int) {
-//                    Toast.makeText(requireContext(), "${itemList[position]}", Toast.LENGTH_SHORT).show()
-//                }
+
 
                 override fun onMovieLongClicked(position: Int) {
                     val movie = movieList[position]
@@ -75,7 +71,7 @@ class AllMoviesFragment : Fragment() {
                 override fun onEditClicked(position: Int) {
                     val movie = movieList[position]
                     val bundle = Bundle().apply {
-                        putString("keyText", "Edit Movie:")
+                        putString("add/edit", "Edit Movie:")
                     }
                     viewModel.setMovie(movie) // Pass the selected item to ViewModel for editing
                     findNavController().navigate(R.id.action_allMoviesFragment_to_addMovieFragment, bundle)

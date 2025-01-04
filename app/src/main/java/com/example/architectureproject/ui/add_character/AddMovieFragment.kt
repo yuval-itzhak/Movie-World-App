@@ -48,7 +48,7 @@ class AddMovieFragment : Fragment() {
         _binding = AddMovieLayoutBinding.inflate(inflater, container, false)
         textView = binding.newOrEditMovie
 
-        val newText = arguments?.getString("keyText")
+        val newText = arguments?.getString("add/edit")
 
         newText?.let {
             textView.text = it
