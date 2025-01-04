@@ -19,7 +19,12 @@
             app:popExitAnim="@anim/to_right" />
         <action
             android:id="@+id/action_allMoviesFragment_to_detailMovieFragment"
-            app:destination="@id/detailMovieFragment" />
+            app:destination="@id/detailMovieFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/addMovieFragment"
@@ -43,6 +48,7 @@
         tools:layout="@layout/detail_movie_layout" >
         <action
             android:id="@+id/action_detailMovieFragment_to_allMoviesFragment"
-            app:destination="@id/allMoviesFragment" />
+            app:destination="@id/allMoviesFragment"
+            />
     </fragment>
 </navigation>

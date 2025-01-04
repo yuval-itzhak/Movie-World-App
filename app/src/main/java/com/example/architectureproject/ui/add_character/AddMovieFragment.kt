@@ -185,7 +185,7 @@ class AddMovieFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val genres = listOf("Action", "Comedy", "Drama", "Sci-Fi", "Horror", "Romantic", "Documentary", "Musical", "Other")
+        val genres = listOf("Action", "Comedy", "Drama","Fantasy", "Sci-Fi", "Horror", "Romantic", "Documentary", "Musical", "Other")
 
         genreAdapter = GenreAdapter(genres, object : GenreAdapter.OnGenreClickListener {
             override fun onGenreClick(genre: String) {
