@@ -1,5 +1,6 @@
 package com.example.architectureproject.ui.all_characters
 //android.view.LayoutInflater
+import android.graphics.Color
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -9,8 +10,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
+import android.widget.FrameLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -147,9 +151,33 @@ class AllMoviesFragment : Fragment() {
                 "Swipe for delete a movie\nLong click for more details",
                 Snackbar.LENGTH_INDEFINITE // Use INDEFINITE duration
             )
+
             snackbar.setAction("DISMISS") {
                 snackbar.dismiss() // Allow manual dismissal
             }
+
+            // Modify the layout parameters to position the Snackbar in the middle
+            val snackbarView = snackbar.view
+            val params = snackbarView.layoutParams
+
+            // Check the type of layout parameters and cast accordingly
+            if (params is CoordinatorLayout.LayoutParams) {
+                params.gravity = Gravity.START
+            } else if (params is FrameLayout.LayoutParams) {
+                params.gravity = Gravity.START
+            }
+            snackbarView.layoutParams = params
+            snackbar.setActionTextColor(Color.WHITE)
+            snackbar.view.setBackgroundColor(Color.BLACK)
+
+            // Customize the text appearance
+            val snackbarText = snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+            snackbarText.maxLines = 2 // Ensure the text wraps into two lines
+            snackbarText.textAlignment = View.TEXT_ALIGNMENT_CENTER // Optional: Center-align the text
+            snackbarText.setTextColor(Color.WHITE) // Optional: Change the text color
+            snackbarText.textSize = 10f
+
+
             // Auto-dismiss after a delay (e.g., 5 seconds)
             val handler = android.os.Handler()
             handler.postDelayed({
