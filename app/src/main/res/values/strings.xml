@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Movie World</string>
+    <string name="edit_movie">Edit Movie:</string>
+    <string name="confirm_deletion">Confirm Deletion</string>
+    <string name="are_you_sure">Are you sure you want to delete this movie?</string>
+    <string name="yes">Yes</string>
+    <string name="movie_deleted">Movie deleted</string>
+    <string name="no">No</string>
+    <string name="movie_not_deleted">Movie not deleted</string>
+    <string name="swipe_for_delete_a_movie_long_click_for_more_details">Swipe for delete a movie\nLong click for more details</string>
+    <string name="dismiss">CONFIRM</string>
+    <string name="are_you_sure_you_want_to_delete_all">"Are you sure you want to delete all? "</string>
+    <string name="movies_deleted">Movies deleted</string>
+    <string name="delete_all">Delete all</string>
+    <string name="more_information">More information</string>
+    <string name="welcome_to_movie_world_app">Welcome to Movie World App!</string>
+    <string name="search_for_a_movie">Search for a Movie</string>
+    <string name="add_new_item">Add New Movie</string>
 </resources>

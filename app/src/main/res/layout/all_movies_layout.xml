@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/gradient_background"
                     android:padding="16dp"
-                    android:text="Welcome to Movie World App!"
+                    android:text="@string/welcome_to_movie_world_app"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -68,7 +68,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/gradient_background"
-                        android:hint="Search for a Movie"
+                        android:hint="@string/search_for_a_movie"
                         android:imeOptions="actionSearch"
                         android:inputType="text"
                         android:padding="08dp" />
@@ -93,7 +93,7 @@
         android:layout_margin="16dp"
         android:tint="#000000"
         app:backgroundTint="#FFFDE7"
-        android:contentDescription="Add New Item"
+        android:contentDescription="@string/add_new_item"
         android:src="@drawable/baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

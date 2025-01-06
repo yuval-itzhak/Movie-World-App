@@ -76,7 +76,7 @@ class AllMoviesFragment : Fragment() {
                 override fun onEditClicked(position: Int) {
                     val movie = movieList[position]
                     val bundle = Bundle().apply {
-                        putString("add/edit", "Edit Movie:")
+                        putString("add/edit", getString(R.string.edit_movie))
                     }
                     viewModel.setMovie(movie) // Pass the selected item to ViewModel for editing
                     findNavController().navigate(R.id.action_allMoviesFragment_to_addMovieFragment, bundle)
@@ -103,15 +103,17 @@ class AllMoviesFragment : Fragment() {
                 val movie = (binding.recycle.adapter as MovieAdapter).movieAt(position)
 
                 AlertDialog.Builder(requireContext())
-                    .setTitle("Confirm Deletion")
-                    .setMessage("Are you sure you want to delete this movie?")
-                    .setPositiveButton("Yes") { _, _ ->
+                    .setTitle(getString(R.string.confirm_deletion))
+                    .setMessage(getString(R.string.are_you_sure))
+                    .setPositiveButton(getString(R.string.yes)) { _, _ ->
                         viewModel.deleteMovie(movie)
-                        Toast.makeText(requireContext(), "Movie deleted", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),
+                            getString(R.string.movie_deleted), Toast.LENGTH_SHORT).show()
                     }
-                    .setNegativeButton("No") { _, _ ->
+                    .setNegativeButton(getString(R.string.no)) { _, _ ->
                         (binding.recycle.adapter as MovieAdapter).notifyItemChanged(position)
-                        Toast.makeText(requireContext(), "Movie not deleted", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),
+                            getString(R.string.movie_not_deleted), Toast.LENGTH_SHORT).show()
                     }
                     .setOnCancelListener {
                         (binding.recycle.adapter as MovieAdapter).notifyItemChanged(position)
@@ -149,11 +151,11 @@ class AllMoviesFragment : Fragment() {
         if (item.itemId == R.id.info_button){
             val snackbar = Snackbar.make(
                 binding.root,
-                "Swipe for delete a movie\nLong click for more details",
+                getString(R.string.swipe_for_delete_a_movie_long_click_for_more_details),
                 Snackbar.LENGTH_INDEFINITE // Use INDEFINITE duration
             )
 
-            snackbar.setAction("DISMISS") {
+            snackbar.setAction(getString(R.string.dismiss)) {
                 snackbar.dismiss()
             }
 
@@ -189,12 +191,13 @@ class AllMoviesFragment : Fragment() {
         }
         if (item.itemId == R.id.action_delete){
             val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Confirm delete")
-                .setMessage("Are you sure you want to delete all? ")
-                .setPositiveButton("Yes"){
+            builder.setTitle(getString(R.string.confirm_deletion))
+                .setMessage(getString(R.string.are_you_sure_you_want_to_delete_all))
+                .setPositiveButton(getString(R.string.yes)){
                     p0, p1 ->
                     viewModel.deleteAll()
-                    Toast.makeText(requireContext(), "Movies deleted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),
+                        getString(R.string.movies_deleted), Toast.LENGTH_SHORT).show()
                 }.show()
         }
         return super.onOptionsItemSelected(item)
