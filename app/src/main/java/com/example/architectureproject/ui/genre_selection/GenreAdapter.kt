@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.architectureproject.R
+
 class GenreAdapter(
     private val genres: List<String>,
-    private val listener: OnGenreClickListener
+    private val listener: OnGenreClickListener,
+    private val initialSelectedGenre: String? = null // For preselecting a genre
 ) : RecyclerView.Adapter<GenreAdapter.GenreViewHolder>() {
 
-    private var selectedPosition: Int = -1 // Tracks the selected position
+    private var selectedPosition: Int = genres.indexOf(initialSelectedGenre) // Initialize with the selected genre's position
 
     interface OnGenreClickListener {
         fun onGenreClick(genre: String)
@@ -27,14 +29,14 @@ class GenreAdapter(
         val genre = genres[position]
         holder.genreTextView.text = genre
 
-        // Update background color based on selection
-        holder.genreTextView.setBackgroundColor(0xFFFDE7.toInt())
-        holder.genreTextView.setTextColor(0xFF000000.toInt())
+        // Default styling for unselected items
+        holder.genreTextView.setBackgroundColor(0xFFFDE7.toInt()) // Light yellow background
+        holder.genreTextView.setTextColor(0xFF000000.toInt()) // Black text
 
         // Highlight selected item
         if (position == selectedPosition) {
-            holder.genreTextView.setBackgroundColor(0xFFF5DD42.toInt())
-            holder.genreTextView.setTextColor(0xFF000000.toInt())
+            holder.genreTextView.setBackgroundColor(0xFFC6A700.toInt()) // Darker yellow
+            holder.genreTextView.setTextColor(0xFF000000.toInt()) // White text
         }
 
         // Handle click event to update selection
@@ -42,18 +44,11 @@ class GenreAdapter(
             val previousPosition = selectedPosition
             selectedPosition = position
 
-            notifyItemChanged(previousPosition)
-            notifyItemChanged(selectedPosition)
-        }
-
-        // Handle item click
-        holder.itemView.setOnClickListener {
-            val previousPosition = selectedPosition
-            selectedPosition = position
-
+            // Notify RecyclerView to update the item views
             notifyItemChanged(previousPosition)
             notifyItemChanged(selectedPosition)
 
+            // Notify listener about the genre selection
             listener.onGenreClick(genre)
         }
     }
