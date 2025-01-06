@@ -24,5 +24,7 @@ data class Movie(
     @ColumnInfo(name = "description")
     val description:String,
     @ColumnInfo(name = "image")
-    val photo: String?
+    val photo: String?,
+    @ColumnInfo(name = "video_id")
+    val videoId: String? = null
 )

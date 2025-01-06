@@ -8,7 +8,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.architectureproject.data.model.Movie
 
-@Database(entities = [Movie::class], version = 5, exportSchema = false)
+@Database(entities = [Movie::class], version = 6, exportSchema = false)
 abstract class MovieDataBase : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao
@@ -43,6 +43,11 @@ abstract class MovieDataBase : RoomDatabase() {
                 database.execSQL("ALTER TABLE items ADD COLUMN genre TEXT NOT NULL DEFAULT ''")
             }
         }
+        private val MIGRATION_5_6 = object : Migration(5, 6) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE items ADD COLUMN video_id TEXT")
+            }
+        }
 
         fun getDataBase(context: Context): MovieDataBase {
             return instance ?: synchronized(this) {
@@ -51,7 +56,7 @@ abstract class MovieDataBase : RoomDatabase() {
                     MovieDataBase::class.java,
                     "movies_db"
                 )
-                    .addMigrations(MIGRATION_4_5) // Add all migrations
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6) //Add all migrations
                     .build().also { instance = it }
             }
         }

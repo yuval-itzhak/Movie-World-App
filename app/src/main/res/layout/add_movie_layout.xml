@@ -81,6 +81,22 @@
             android:layout_marginTop="10dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/video_id_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter youtube trailer link (optional)"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/movie_writer"

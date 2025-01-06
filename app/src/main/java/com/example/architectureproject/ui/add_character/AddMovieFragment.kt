@@ -93,6 +93,7 @@ class AddMovieFragment : Fragment() {
             binding.movieDescription.setText(movie.description)
             imageUri = movie.photo?.let { Uri.parse(it) }
             binding.resultImage.setImageURI(imageUri)
+            binding.videoIdInput.setText(movie.videoId)
         }
 
         // Handle Finish button
@@ -105,7 +106,12 @@ class AddMovieFragment : Fragment() {
             val release = binding.movieRelease.text.toString().trim()
             val description = binding.movieDescription.text.toString()
             val photo = imageUri?.toString()
+            var videoId = if (binding.videoIdInput.text.toString().trim().isEmpty()) {
+                null
+            } else {
+                binding.videoIdInput.text.toString().trim().replace("https://www.youtube.com/watch?v=", "")
 
+            }
             if (title.isEmpty()) {
                 Toast.makeText(requireContext(), "Enter movie name", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -157,7 +163,8 @@ class AddMovieFragment : Fragment() {
                     stars = stars,
                     release = release.toInt(),
                     description = description,
-                    photo = photo
+                    photo = photo,
+                    videoId = videoId
                 )
                 viewModel.updateMovie(updatedMovie)
             } else {
@@ -169,7 +176,8 @@ class AddMovieFragment : Fragment() {
                     stars = stars,
                     release = release.toInt(),
                     description = description,
-                    photo = photo
+                    photo = photo,
+                    videoId = videoId
                 )
                 viewModel.addMovie(newMovie)
             }

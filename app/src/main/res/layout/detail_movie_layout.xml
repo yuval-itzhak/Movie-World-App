@@ -41,6 +41,14 @@
                     android:hint="Title"
                     android:textStyle="bold" />
 
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:id="@+id/youtube_player_view"
+                    android:layout_marginTop="5dp"
+                    android:padding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingClass" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

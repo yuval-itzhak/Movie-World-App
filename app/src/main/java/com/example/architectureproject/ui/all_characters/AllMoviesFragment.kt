@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.os.Bundle
+import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
@@ -179,7 +180,7 @@ class AllMoviesFragment : Fragment() {
 
 
             // Auto-dismiss after a delay (e.g., 5 seconds)
-            val handler = android.os.Handler()
+            val handler = Handler()
             handler.postDelayed({
                 snackbar.dismiss()
             }, 5000) // 5000 ms = 5 seconds

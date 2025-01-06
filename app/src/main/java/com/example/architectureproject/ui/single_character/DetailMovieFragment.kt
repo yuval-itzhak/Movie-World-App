@@ -9,14 +9,17 @@ import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.example.architectureproject.databinding.DetailMovieLayoutBinding
 import com.example.architectureproject.ui.MoviesViewModel
-
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
 class DetailMovieFragment : Fragment() {
 
-    val viewModel : MoviesViewModel by activityViewModels() //TODO: take care of the warnings (check if it works when those variables are private)
-    var _binding : DetailMovieLayoutBinding? = null
-
+    private val viewModel: MoviesViewModel by activityViewModels()
+    private var _binding: DetailMovieLayoutBinding? = null
     private val binding get() = _binding!!
+
+    private var videoId: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,18 +29,38 @@ class DetailMovieFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //TODO: Add animations
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.chosenMovie.observe(viewLifecycleOwner){
-            binding.movieTitle.text = "Title: ${it?.title}" //TODO: take care of the warnings (add string resource file with translations)
-            binding.movieGenre.text = "Genre: ${it?.genre}"
-            binding.movieDirector.text = "Director: ${it?.director}"
-            binding.movieWriter.text = "Writer: ${it?.writer}"
-            binding.movieStars.text = "Stars: ${it?.stars}"
-            binding.movieRelease.text = "Release year: ${it?.release.toString()}"
-            binding.movieDescription.text = it?.description
-            Glide.with(requireContext()).load(it?.photo).into(binding.movieImage)
+
+        viewModel.chosenMovie.observe(viewLifecycleOwner) { movie ->
+            if (movie != null) {
+                binding.movieTitle.text = "${movie.title}"
+                binding.movieGenre.text = "Genre: ${movie.genre}"
+                binding.movieDirector.text = "Director: ${movie.director}"
+                binding.movieWriter.text = "Writer: ${movie.writer}"
+                binding.movieStars.text = "Stars: ${movie.stars}"
+                binding.movieRelease.text = "Release year: ${movie.release}"
+                binding.movieDescription.text = movie.description
+                Glide.with(requireContext()).load(movie.photo).into(binding.movieImage)
+                videoId = movie.videoId
+
+                if (videoId.isNullOrEmpty()) { //Toggle youtube player visibility based on the value of videoId
+                    binding.youtubePlayerView.visibility = View.GONE
+                } else {
+                    binding.youtubePlayerView.visibility = View.VISIBLE
+                }
+            }
         }
+
+        val youTubePlayerView = binding.youtubePlayerView
+        lifecycle.addObserver(youTubePlayerView)
+        youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                videoId?.let {
+                    youTubePlayer.loadVideo(it, 0f)
+                }
+            }
+        })
     }
 
     override fun onDestroyView() {
