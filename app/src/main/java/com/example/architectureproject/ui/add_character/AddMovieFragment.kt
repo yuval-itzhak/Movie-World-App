@@ -63,7 +63,8 @@ class AddMovieFragment : Fragment() {
             binding.resultImage.setImageURI(it)
             if (it != null) {
                 binding.resultImage.setImageURI(it)
-                binding.resultImage.visibility = View.VISIBLE // Make it visible after picking an image
+                binding.resultImage.visibility =
+                    View.VISIBLE // Make it visible after picking an image
                 requireActivity().contentResolver.takePersistableUriPermission(
                     it,
                     Intent.FLAG_GRANT_READ_URI_PERMISSION
@@ -106,27 +107,40 @@ class AddMovieFragment : Fragment() {
             var videoId = if (binding.videoIdInput.text.toString().trim().isEmpty()) {
                 null
             } else {
-                binding.videoIdInput.text.toString().trim().replace("https://www.youtube.com/watch?v=", "")
+                binding.videoIdInput.text.toString().trim()
+                    .replace("https://www.youtube.com/watch?v=", "")
 
             }
             if (title.isEmpty()) {
-                Toast.makeText(requireContext(), "Enter movie name", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.alert_enter_movie_name), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             if (genre.isEmpty()) {
-                Toast.makeText(requireContext(), "Select genre", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.alert_select_genre), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (!director.matches(Regex("^[a-zA-Z\\s]+$"))) {
-                Toast.makeText(requireContext(), "Enter director's name properly", Toast.LENGTH_SHORT).show()
+            if (!director.matches(Regex("^[a-zA-Zא-ת\\s]+$"))) {
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.alert_director_properly),
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
-            if (!writer.matches(Regex("^[a-zA-Z\\s]+$"))) {
-                Toast.makeText(requireContext(), "Enter writer's name properly", Toast.LENGTH_SHORT).show()
+            if (!writer.matches(Regex("^[a-zA-Zא-ת\\s]+$"))) {
+                Toast.makeText(requireContext(),
+                    getString(R.string.alert_writer_properly), Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
             if (!release.matches(Regex("^\\d{4}$"))) {
-                Toast.makeText(requireContext(), "Enter year with 4 digits only", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.alert_year_4_digits),
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 
@@ -134,20 +148,28 @@ class AddMovieFragment : Fragment() {
             try {
                 val releaseYear = release.toInt()
                 if (releaseYear > currentYear || releaseYear < 1900) {
-                    Toast.makeText(requireContext(), "Year must be between 1900-nowadays", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.alert_year_between),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     return@setOnClickListener
                 }
             } catch (e: NumberFormatException) {
-                Toast.makeText(requireContext(), "Enter a valid year", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.alert_valid_year), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (description.isEmpty()) {
-                Toast.makeText(requireContext(), "Enter movie description", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.alert_movie_description), Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
             if (photo == null || photo.isEmpty()) {
-                Toast.makeText(requireContext(), "Select photo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.alert_select_poster), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -190,7 +212,16 @@ class AddMovieFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val genres = listOf("Action", "Comedy", "Drama","Fantasy", "Sci-Fi", "Horror", "Romantic", "Documentary", "Musical", "Other")
+        val genres = listOf(
+            getString(R.string.action),
+            getString(R.string.comedy),
+            getString(R.string.drama),
+            getString(R.string.fantasy),
+            getString(R.string.sci_fi),
+            getString(R.string.horror),
+            getString(R.string.romantic), getString(R.string.documentary),
+            getString(R.string.musical), getString(R.string.other)
+        )
 
         genreAdapter = GenreAdapter(genres, object : GenreAdapter.OnGenreClickListener {
             override fun onGenreClick(genre: String) {
@@ -199,7 +230,8 @@ class AddMovieFragment : Fragment() {
         })
 
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = genreAdapter
         }
     }
@@ -235,7 +267,11 @@ class AddMovieFragment : Fragment() {
                     }
 
                     KeyEvent.KEYCODE_DEL -> {
-                        if (cursorPosition > 2 && text.substring(cursorPosition - 2, cursorPosition) == "• ") {
+                        if (cursorPosition > 2 && text.substring(
+                                cursorPosition - 2,
+                                cursorPosition
+                            ) == "• "
+                        ) {
                             editText.text.delete(cursorPosition - 2, cursorPosition)
                             return@setOnKeyListener true
                         }

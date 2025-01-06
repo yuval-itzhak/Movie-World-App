@@ -17,5 +17,33 @@
     <string name="welcome_to_movie_world_app">ברוכים הבאים לעולם הסרטים!</string>
     <string name="search_for_a_movie">חפש סרט</string>
     <string name="add_new_item">הוסף סרט חדש</string>
-
+    <string name="add_new_movie">הוסף סרט חדש:</string>
+    <string name="enter_movie_name">שם סרט</string>
+    <string name="enter_director_name">במאי (שם פרטי ומשפחה)</string>
+    <string name="enter_youtube_link">קישור לטריילר ביוטיוב (אופציונלי)</string>
+    <string name="enter_writer_name">כותב (שם פרטי ומשפחה)</string>
+    <string name="enter_main_stars">שמות כוכבים ראשיים (כל שם בשורה נפרדת)</string>
+    <string name="enter_release_year">שנת יציאה (4 ספרות בין 1900 לכיום)</string>
+    <string name="enter_movie_description">תיאור הסרט</string>
+    <string name="select_poster">בחר פוסטר</string>
+    <string name="save_movie">שמירת סרט</string>
+    <string name="action">פעולה</string>
+    <string name="comedy">קומדיה</string>
+    <string name="drama">דרמה</string>
+    <string name="fantasy">פנטזיה</string>
+    <string name="sci_fi">מד"ב</string>
+    <string name="horror">אימה</string>
+    <string name="romantic">רומנטי</string>
+    <string name="documentary">דוקומנטרי</string>
+    <string name="musical">מחזמר</string>
+    <string name="other">אחר</string>
+    <string name="alert_enter_movie_name">הכנס שם סרט</string>
+    <string name="alert_select_genre">בחר זאנר</string>
+    <string name="alert_director_properly">שם במאי מכיל רק אותיות</string>
+    <string name="alert_writer_properly">שם כותב רק אותיותy</string>
+    <string name="alert_year_4_digits">הכנס שנה רק על ידי 4 ספרות</string>
+    <string name="alert_year_between">שנה חייבת להיות בין 1900 לכיום</string>
+    <string name="alert_valid_year">הכנס שנה תקינה</string>
+    <string name="alert_movie_description">הכנס תקציר סרט</string>
+    <string name="alert_select_poster">נא לבחור פוסטר</string>
 </resources>

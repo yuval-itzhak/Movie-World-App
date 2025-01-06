@@ -21,7 +21,7 @@
             android:layout_margin="20dp"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Add New Movie:"
+            android:text="@string/add_new_movie"
             android:textColor="@color/white"
             android:textSize="40sp"
             android:textStyle="bold" />
@@ -37,7 +37,7 @@
                 android:id="@+id/movie_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter movie name"
+                android:hint="@string/enter_movie_name"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -69,7 +69,7 @@
                 android:id="@+id/movie_director"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter director`s name (First and Last)"
+                android:hint="@string/enter_director_name"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -85,7 +85,7 @@
                 android:id="@+id/video_id_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter youtube trailer link (optional)"
+                android:hint="@string/enter_youtube_link"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -102,7 +102,7 @@
                 android:id="@+id/movie_writer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter writer`s name (First and Last)"
+                android:hint="@string/enter_writer_name"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -119,7 +119,7 @@
                 android:id="@+id/movie_stars"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter main stars (each name in different line)"
+                android:hint="@string/enter_main_stars"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -136,7 +136,7 @@
                 android:id="@+id/movie_release"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter release year (Between 1900 and nowadays)"
+                android:hint="@string/enter_release_year"
                 android:inputType="number"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
@@ -154,7 +154,7 @@
                 android:id="@+id/movie_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter movie Description"
+                android:hint="@string/enter_movie_description"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -182,7 +182,7 @@
                     android:gravity="center"
                     android:textColor="@color/black"
                     android:backgroundTint="#FFFDE7"
-                    android:text="Select poster" />
+                    android:text="@string/select_poster" />
 
                 <Button
                     android:id="@+id/finish_btn"
@@ -192,7 +192,7 @@
                     android:textColor="@color/black"
                     android:backgroundTint="#FFFDE7"
                     android:gravity="center"
-                    android:text="Save movie" />
+                    android:text="@string/save_movie" />
             </LinearLayout>
 
             <ImageView
