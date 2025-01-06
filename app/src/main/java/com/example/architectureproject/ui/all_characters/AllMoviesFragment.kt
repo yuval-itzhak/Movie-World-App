@@ -1,5 +1,5 @@
 package com.example.architectureproject.ui.all_characters
-//android.view.LayoutInflater
+
 import android.graphics.Color
 import android.view.Menu
 import android.view.MenuInflater
@@ -143,7 +143,7 @@ class AllMoviesFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    //כדי לקבל את האירוע של הלחיצה על הפח אשפה (על הmenu)
+
     @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.info_button){
@@ -154,7 +154,7 @@ class AllMoviesFragment : Fragment() {
             )
 
             snackbar.setAction("DISMISS") {
-                snackbar.dismiss() // Allow manual dismissal
+                snackbar.dismiss()
             }
 
             // Modify the layout parameters to position the Snackbar in the middle
@@ -173,17 +173,17 @@ class AllMoviesFragment : Fragment() {
 
             // Customize the text appearance
             val snackbarText = snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
-            snackbarText.maxLines = 2 // Ensure the text wraps into two lines
-            snackbarText.textAlignment = View.TEXT_ALIGNMENT_CENTER // Optional: Center-align the text
-            snackbarText.setTextColor(Color.WHITE) // Optional: Change the text color
+            snackbarText.maxLines = 2
+            snackbarText.textAlignment = View.TEXT_ALIGNMENT_CENTER
+            snackbarText.setTextColor(Color.WHITE)
             snackbarText.textSize = 10f
 
 
-            // Auto-dismiss after a delay (e.g., 5 seconds)
+            // Auto-dismiss after a delay
             val handler = Handler()
             handler.postDelayed({
                 snackbar.dismiss()
-            }, 5000) // 5000 ms = 5 seconds
+            }, 5000)
             snackbar.show()
 
         }

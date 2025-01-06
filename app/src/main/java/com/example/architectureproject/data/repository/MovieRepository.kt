@@ -5,15 +5,9 @@ import androidx.lifecycle.LiveData
 import com.example.architectureproject.data.local_db.MovieDao
 import com.example.architectureproject.data.local_db.MovieDataBase
 import com.example.architectureproject.data.model.Movie
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlin.coroutines.CoroutineContext
-import kotlinx.coroutines.launch
 
-class MovieRepository(application : Application)  {// : CoroutineScope {
+class MovieRepository(application : Application)  {
 
-//    override val coroutineContext: CoroutineContext
-//        get() = Dispatchers.IO
 
     private var movieDao : MovieDao?
 
@@ -31,27 +25,22 @@ class MovieRepository(application : Application)  {// : CoroutineScope {
     }
 
     suspend fun addMovie(movie : Movie){
-       // launch {
-            movieDao?.addMovie(movie)
-       // }
+
+        movieDao?.addMovie(movie)
+
     }
 
     suspend fun deleteMovie(movie : Movie){
-       // launch {
-            movieDao?.deleteMovie(movie)
-       // }
+        movieDao?.deleteMovie(movie)
+
     }
 
     suspend fun updateMovie(movie: Movie){
-        //launch {
-            movieDao?.update(movie)
-        //}
+        movieDao?.update(movie)
     }
 
     suspend fun deleteAll() {
-//        launch {
-            movieDao?.deleteAll()
-//        }
+        movieDao?.deleteAll()
     }
 
 }

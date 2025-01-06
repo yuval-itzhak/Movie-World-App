@@ -39,7 +39,7 @@ abstract class MovieDataBase : RoomDatabase() {
         }
         private val MIGRATION_4_5 = object : Migration(4, 5) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                // remane database name
+                //rename database name
                 database.execSQL("ALTER TABLE items ADD COLUMN genre TEXT NOT NULL DEFAULT ''")
             }
         }

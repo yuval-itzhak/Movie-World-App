@@ -1,6 +1,5 @@
 package com.example.architectureproject.ui.add_character
 
-//import GenreDecoration
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -75,10 +74,8 @@ class AddMovieFragment : Fragment() {
 
         binding.resultImage.visibility = View.INVISIBLE
 
-        // Setup RecyclerView
         setupRecyclerView()
 
-        // Setup bullet functionality for the "stars" field
         setupBulletInput(binding.movieStars)
 
         // Prefill fields if editing an existing item

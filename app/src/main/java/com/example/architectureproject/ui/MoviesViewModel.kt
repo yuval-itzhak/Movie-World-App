@@ -37,7 +37,6 @@ class MoviesViewModel(application : Application) : AndroidViewModel(application)
         }
     }
 
-    //מאפשר לך לשתף את הנתונים בין ה-Fragments
     private val _chosenMovie = MutableLiveData<Movie?>()
     val chosenMovie : LiveData<Movie?> get() = _chosenMovie
 

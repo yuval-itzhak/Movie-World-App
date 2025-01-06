@@ -15,7 +15,6 @@ class MovieAdapter(val movies: List<Movie>, val callBack: MovieListener) :
     private var filteredMovies: MutableList<Movie> = movies.toMutableList()
 
     interface MovieListener {
-        //        fun onItemClicked(position: Int)
         fun onMovieLongClicked(position: Int)
         fun onEditClicked(position: Int)
     }
