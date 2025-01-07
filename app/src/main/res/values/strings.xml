@@ -19,7 +19,7 @@
     <string name="add_new_movie">Add New Movie:</string>
     <string name="enter_movie_name">Enter movie name</string>
     <string name="enter_director_name">Enter director`s name (First and Last)</string>
-    <string name="enter_youtube_link">Enter youtube trailer link (optional)</string>
+    <string name="enter_youtube_link">Enter youtube trailer link from browser (optional)</string>
     <string name="enter_writer_name">Enter writer`s name (First and Last)</string>
     <string name="enter_main_stars">Enter main stars (each name in different line)</string>
     <string name="enter_release_year">Enter release year (Between 1900 and nowadays)</string>

@@ -20,7 +20,7 @@
     <string name="add_new_movie">הוסף סרט חדש:</string>
     <string name="enter_movie_name">שם סרט</string>
     <string name="enter_director_name">במאי (שם פרטי ומשפחה)</string>
-    <string name="enter_youtube_link">קישור לטריילר ביוטיוב (אופציונלי)</string>
+    <string name="enter_youtube_link">קישור לטריילר ביוטיוב מהדפדפן (אופציונלי)</string>
     <string name="enter_writer_name">כותב (שם פרטי ומשפחה)</string>
     <string name="enter_main_stars">שמות כוכבים ראשיים (כל שם בשורה נפרדת)</string>
     <string name="enter_release_year">שנת יציאה (4 ספרות בין 1900 לכיום)</string>
