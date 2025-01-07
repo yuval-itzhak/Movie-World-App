@@ -46,4 +46,19 @@
     <string name="alert_valid_year">הכנס שנה תקינה</string>
     <string name="alert_movie_description">הכנס תקציר סרט</string>
     <string name="alert_select_poster">נא לבחור פוסטר</string>
+
+    //detailmovie:
+    <string name="movie_genre"><![CDATA[<b>זאנר:</b> %s]]></string>
+    <string name="movie_director"><![CDATA[<b>במאי:</b> %s]]></string>
+    <string name="movie_writer"><![CDATA[<b>כותב הסרט:</b> %s]]></string>
+    <string name="movie_stars"><![CDATA[<b>שחקנים ראשיים:</b> %s]]></string>
+    <string name="movie_release_year"><![CDATA[<b>שנת יציאה</b> %d]]></string>
+
+    <string name="movie_title_hint">כותרת</string>
+    <string name="movie_genre_hint">זאנר:</string>
+    <string name="movie_director_hint">במאי הסרט:</string>
+    <string name="movie_writer_hint">כותב הסרט:</string>
+    <string name="movie_stars_hint">שחקנים ראשיים:</string>
+    <string name="movie_release_year_hint">שנת יציאה:</string>
+    <string name="movie_description_hint">תיאור:</string>
 </resources>

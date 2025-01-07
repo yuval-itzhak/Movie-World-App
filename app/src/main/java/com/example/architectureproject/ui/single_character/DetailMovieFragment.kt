@@ -1,6 +1,7 @@
 package com.example.architectureproject.ui.single_character
 
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import com.example.architectureproject.databinding.DetailMovieLayoutBinding
 import com.example.architectureproject.ui.MoviesViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.example.architectureproject.R
 
 class DetailMovieFragment : Fragment() {
 
@@ -24,7 +26,7 @@ class DetailMovieFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = DetailMovieLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -34,12 +36,27 @@ class DetailMovieFragment : Fragment() {
 
         viewModel.chosenMovie.observe(viewLifecycleOwner) { movie ->
             if (movie != null) {
-                binding.movieTitle.text = "${movie.title}"
-                binding.movieGenre.text = "Genre: ${movie.genre}"
-                binding.movieDirector.text = "Director: ${movie.director}"
-                binding.movieWriter.text = "Writer: ${movie.writer}"
-                binding.movieStars.text = "Stars: ${movie.stars}"
-                binding.movieRelease.text = "Release year: ${movie.release}"
+                binding.movieTitle.text = movie.title
+                binding.movieGenre.text = Html.fromHtml(
+                    getString(R.string.movie_genre, movie.genre),
+                    Html.FROM_HTML_MODE_LEGACY
+                )
+                binding.movieDirector.text = Html.fromHtml(
+                    getString(R.string.movie_director, movie.director),
+                    Html.FROM_HTML_MODE_LEGACY
+                )
+                binding.movieWriter.text = Html.fromHtml(
+                    getString(R.string.movie_writer, movie.writer),
+                    Html.FROM_HTML_MODE_LEGACY
+                )
+                binding.movieStars.text = Html.fromHtml(
+                    getString(R.string.movie_stars, movie.stars),
+                    Html.FROM_HTML_MODE_LEGACY
+                )
+                binding.movieRelease.text = Html.fromHtml(
+                    getString(R.string.movie_release_year, movie.release),
+                    Html.FROM_HTML_MODE_LEGACY
+                )
                 binding.movieDescription.text = movie.description
                 Glide.with(requireContext()).load(movie.photo).into(binding.movieImage)
                 videoId = movie.videoId

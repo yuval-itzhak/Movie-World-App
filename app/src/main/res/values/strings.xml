@@ -45,4 +45,20 @@
     <string name="alert_valid_year">Enter a valid year</string>
     <string name="alert_movie_description">Enter movie description</string>
     <string name="alert_select_poster">Select poster</string>
+
+    //detailmovie:
+
+    <string name="movie_genre"><![CDATA[<b>Genre:</b> %s]]></string>
+    <string name="movie_director"><![CDATA[<b>Director:</b> %s]]></string>
+    <string name="movie_writer"><![CDATA[<b>Writer:</b> %s]]></string>
+    <string name="movie_stars"><![CDATA[<b>Stars:</b> %s]]></string>
+    <string name="movie_release_year"><![CDATA[<b>Release year:</b> %d]]></string>
+
+    <string name="movie_title_hint">Title</string>
+    <string name="movie_genre_hint">Genre:</string>
+    <string name="movie_director_hint">Director:</string>
+    <string name="movie_writer_hint">Writer:</string>
+    <string name="movie_stars_hint">Stars:</string>
+    <string name="movie_release_year_hint">Release year:</string>
+    <string name="movie_description_hint">Description:</string>
 </resources>
