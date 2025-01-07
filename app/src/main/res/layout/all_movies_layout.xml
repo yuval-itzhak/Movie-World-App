@@ -8,6 +8,7 @@
     android:background="@drawable/background_black_yellow"
     tools:context=".ui.all_characters.AllMoviesFragment">
 
+
     <!-- ScrollView -->
     <ScrollView
         android:layout_width="0dp"
@@ -17,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:fillViewport="true">
+
 
         <LinearLayout
             android:layout_width="match_parent"
