@@ -107,8 +107,12 @@ class AddMovieFragment : Fragment() {
             val release = binding.movieRelease.text.toString().trim()
             val description = binding.movieDescription.text.toString()
             val photo = imageUri?.toString()
-            val videoId = binding.videoIdInput.text.toString().trim().takeIf { it.isNotEmpty() }
-                ?.replace("https://www.youtube.com/watch?v=", "")
+            val input = binding.videoIdInput.text.toString().trim()
+            val videoId = input.takeIf { it.isNotEmpty() }?.let {
+                val regex = "(?<=v=|youtu\\.be/)[^&?\\s]+".toRegex()
+                regex.find(it)?.value
+            }
+
 
             // Validation
             if (title.isEmpty()) {
