@@ -63,4 +63,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1")
+    implementation ("com.google.android.material:material:1.9.0")
+
 }

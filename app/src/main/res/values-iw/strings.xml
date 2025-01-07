@@ -40,7 +40,7 @@
     <string name="alert_enter_movie_name">הכנס שם סרט</string>
     <string name="alert_select_genre">בחר זאנר</string>
     <string name="alert_director_properly">שם במאי מכיל רק אותיות</string>
-    <string name="alert_writer_properly">שם כותב רק אותיותy</string>
+    <string name="alert_writer_properly">שם כותב רק אותיות</string>
     <string name="alert_year_4_digits">הכנס שנה רק על ידי 4 ספרות</string>
     <string name="alert_year_between">שנה חייבת להיות בין 1900 לכיום</string>
     <string name="alert_valid_year">הכנס שנה תקינה</string>
