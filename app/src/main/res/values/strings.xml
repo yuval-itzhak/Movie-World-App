@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movie World</string>
+    <string name="app_name">Movie Wod</string>
     <string name="edit_movie">Edit Movie:</string>
     <string name="confirm_deletion">Confirm Deletion</string>
     <string name="are_you_sure">Are you sure you want to delete this movie?</string>

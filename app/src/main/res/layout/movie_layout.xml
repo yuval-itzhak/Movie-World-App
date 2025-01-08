@@ -5,11 +5,9 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardUseCompatPadding="true"
-    android:background="#FFFDE7"
-    app:cardCornerRadius="12dp"
+    android:background="@drawable/background_black_yellow"
+    app:cardCornerRadius="24dp"
     android:elevation="6dp">
-
-
 
     <LinearLayout
         android:layout_width="match_parent"

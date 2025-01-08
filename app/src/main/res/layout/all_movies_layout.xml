@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_black_yellow"
+    android:background="@drawable/logo_dark_black_bg_phone"
     tools:context=".ui.all_characters.AllMoviesFragment">
 
 
@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp"
+                app:cardCornerRadius="20dp"
                 app:cardElevation="4dp">
 
                 <TextView
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp"
+                app:cardCornerRadius="20dp"
                 app:cardElevation="4dp">
 
                 <LinearLayout
@@ -71,6 +71,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/gradient_background"
                         android:hint="@string/search_for_a_movie"
+                        android:textSize="22dp"
                         android:imeOptions="actionSearch"
                         android:inputType="text"
                         android:padding="08dp" />

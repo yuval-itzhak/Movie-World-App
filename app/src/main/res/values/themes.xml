@@ -3,7 +3,6 @@
     <style name="Base.Theme.ArchitectureProject" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Define primary color for the ActionBar/Toolbar -->
         <item name="colorPrimary">@color/black</item> <!-- Toolbar background color -->
-        <item name="android:textColorPrimary">@color/black</item>
     </style>
 
     <style name="Theme.ArchitectureProject" parent="Base.Theme.ArchitectureProject" />

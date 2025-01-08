@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
-    android:background="@drawable/background_black_yellow"
+    android:background="@drawable/logo_dark_black_bg_phone"
     tools:context=".ui.single_character.DetailMovieFragment">
 
     <androidx.cardview.widget.CardView
