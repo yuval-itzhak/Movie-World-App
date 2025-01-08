@@ -15,7 +15,7 @@
     <string name="delete_all">מחק הכל</string>
     <string name="more_information">מידע נוסף</string>
     <string name="welcome_to_movie_world_app">ברוכים הבאים לעולם הסרטים!</string>
-    <string name="search_for_a_movie">חפש סרט</string>
+    <string name="search_for_a_movie">חפש סרט...</string>
     <string name="add_new_item">הוסף סרט חדש</string>
     <string name="add_new_movie">הוסף סרט חדש:</string>
     <string name="enter_movie_name">שם סרט</string>
@@ -26,7 +26,7 @@
     <string name="enter_release_year">שנת יציאה (4 ספרות בין 1900 לכיום)</string>
     <string name="enter_movie_description">תיאור הסרט</string>
     <string name="select_poster">בחר פוסטר</string>
-    <string name="save_movie">שמירת סרט</string>
+    <string name="save_movie">שמור סרט</string>
     <string name="action">פעולה</string>
     <string name="comedy">קומדיה</string>
     <string name="drama">דרמה</string>
