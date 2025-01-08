@@ -52,7 +52,7 @@
     <string name="movie_director"><![CDATA[<b>במאי:</b><br>%s]]></string>
     <string name="movie_writer"><![CDATA[<b>כותב הסרט:</b><br>%s]]></string>
     <string name="movie_stars"><![CDATA[<b>שחקנים ראשיים:</b><br>%s]]></string>
-    <string name="movie_release_year"><![CDATA[<b>שנת יציאה:</b><br>%s]]></string>
+    <string name="movie_release_year"><![CDATA[<b>שנת יציאה:</b><br>%d]]></string>
 
     <string name="movie_title_hint">כותרת</string>
     <string name="movie_genre_hint">זאנר:</string>
