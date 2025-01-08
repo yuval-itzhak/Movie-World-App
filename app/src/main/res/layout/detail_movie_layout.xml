@@ -109,6 +109,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/movie_image"
                     android:layout_margin="15dp"
+                    android:contentDescription="@string/movie_image_hint"
                     android:minHeight="200dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter" />
