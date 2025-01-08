@@ -20,7 +20,7 @@
     <string name="add_new_movie">הוסף סרט חדש:</string>
     <string name="enter_movie_name">שם סרט</string>
     <string name="enter_director_name">במאי (שם פרטי ומשפחה)</string>
-    <string name="enter_youtube_link">קישור לטריילר ביוטיוב מהדפדפן (אופציונלי)</string>
+    <string name="enter_youtube_link">קישור לטריילר ביוטיוב (אופציונלי)</string>
     <string name="enter_writer_name">כותב (שם פרטי ומשפחה)</string>
     <string name="enter_main_stars">שמות כוכבים ראשיים (כל שם בשורה נפרדת)</string>
     <string name="enter_release_year">שנת יציאה (4 ספרות בין 1900 לכיום)</string>
@@ -48,11 +48,11 @@
     <string name="alert_select_poster">נא לבחור פוסטר</string>
 
     //detailmovie:
-    <string name="movie_genre"><![CDATA[<b>זאנר:</b> %s]]></string>
-    <string name="movie_director"><![CDATA[<b>במאי:</b> %s]]></string>
-    <string name="movie_writer"><![CDATA[<b>כותב הסרט:</b> %s]]></string>
-    <string name="movie_stars"><![CDATA[<b>שחקנים ראשיים:</b> %s]]></string>
-    <string name="movie_release_year"><![CDATA[<b>שנת יציאה</b> %d]]></string>
+    <string name="movie_genre"><![CDATA[<b>זאנר:</b><br>%s]]></string>
+    <string name="movie_director"><![CDATA[<b>במאי:</b><br>%s]]></string>
+    <string name="movie_writer"><![CDATA[<b>כותב הסרט:</b><br>%s]]></string>
+    <string name="movie_stars"><![CDATA[<b>שחקנים ראשיים:</b><br>%s]]></string>
+    <string name="movie_release_year"><![CDATA[<b>שנת יציאה:</b><br>%s]]></string>
 
     <string name="movie_title_hint">כותרת</string>
     <string name="movie_genre_hint">זאנר:</string>
