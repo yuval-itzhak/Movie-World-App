@@ -45,6 +45,10 @@
     <string name="alert_valid_year">Enter a valid year</string>
     <string name="alert_movie_description">Enter movie description</string>
     <string name="alert_select_poster">Select poster</string>
+    <string name="enter_stars_names">Enter stars names</string>
+    <string name="enter_stars_names_properly">Enter stars names properly</string>
+
+
 
     //detailmovie:
 
@@ -62,4 +66,5 @@
     <string name="movie_release_year_hint">Release year:</string>
     <string name="movie_description_hint">Description:</string>
     <string name="movie_image_hint">Movie image:</string>
+
 </resources>

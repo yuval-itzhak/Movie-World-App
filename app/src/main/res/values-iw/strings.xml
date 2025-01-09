@@ -40,12 +40,17 @@
     <string name="alert_enter_movie_name">הכנס שם סרט</string>
     <string name="alert_select_genre">בחר זאנר</string>
     <string name="alert_director_properly">שם במאי מכיל רק אותיות</string>
-    <string name="alert_writer_properly">שם כותב רק אותיות</string>
+    <string name="alert_writer_properly">שם כותב מכיל רק אותיות</string>
     <string name="alert_year_4_digits">הכנס שנה רק על ידי 4 ספרות</string>
     <string name="alert_year_between">שנה חייבת להיות בין 1900 לכיום</string>
     <string name="alert_valid_year">הכנס שנה תקינה</string>
     <string name="alert_movie_description">הכנס תקציר סרט</string>
     <string name="alert_select_poster">נא לבחור פוסטר</string>
+    <string name="enter_stars_names">הכנס שמות שחקנים ראשיים</string>
+    <string name="enter_stars_names_properly">שם שחקן מכיל רק אותיות</string>
+
+
+
 
     //detailmovie:
     <string name="movie_genre"><![CDATA[<b>זאנר:</b><br>%s]]></string>

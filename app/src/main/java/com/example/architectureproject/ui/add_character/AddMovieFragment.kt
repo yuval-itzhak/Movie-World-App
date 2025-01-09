@@ -147,7 +147,16 @@ class AddMovieFragment : Fragment() {
                 Toast.makeText(requireContext(), getString(R.string.alert_valid_year), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
+            if (stars.isEmpty()) {
+                Toast.makeText(requireContext(),
+                    getString(R.string.enter_stars_names), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (!stars.matches(Regex("^['a-zA-Zא-ת•\\s]+$"))) {
+                Toast.makeText(requireContext(),
+                    getString(R.string.enter_stars_names_properly), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             if (description.isEmpty()) {
                 Toast.makeText(requireContext(), getString(R.string.alert_movie_description), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
