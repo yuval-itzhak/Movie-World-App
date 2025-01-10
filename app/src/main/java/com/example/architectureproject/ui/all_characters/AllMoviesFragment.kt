@@ -178,7 +178,7 @@ class AllMoviesFragment : Fragment() {
             snackbarText.maxLines = 2
             snackbarText.textAlignment = View.TEXT_ALIGNMENT_CENTER
             snackbarText.setTextColor(Color.WHITE)
-            snackbarText.textSize = 10f
+            snackbarText.textSize = 14f
 
 
             // Auto-dismiss after a delay

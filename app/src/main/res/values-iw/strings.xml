@@ -52,7 +52,7 @@
 
 
 
-    //detailmovie:
+<!--detail movie-->
     <string name="movie_genre"><![CDATA[<b>זאנר:</b><br>%s]]></string>
     <string name="movie_director"><![CDATA[<b>במאי:</b><br>%s]]></string>
     <string name="movie_writer"><![CDATA[<b>כותב הסרט:</b><br>%s]]></string>

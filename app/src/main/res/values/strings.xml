@@ -13,7 +13,7 @@
     <string name="movies_deleted">Movies deleted</string>
     <string name="delete_all">Delete all</string>
     <string name="more_information">More information</string>
-    <string name="welcome_to_movie_world_app">Welcome to Movie World App!</string>
+    <string name="welcome_to_movie_world_app">Welcome to Movie World!</string>
     <string name="search_for_a_movie">Search for a Movie...</string>
     <string name="add_new_item">Add New Movie</string>
     <string name="add_new_movie">Add New Movie:</string>
@@ -50,7 +50,7 @@
 
 
 
-    //detailmovie:
+<!--detail movie-->
 
     <string name="movie_genre"><![CDATA[<b>Genre:</b><br>%s]]></string>
     <string name="movie_director"><![CDATA[<b>Director:</b><br>%s]]></string>

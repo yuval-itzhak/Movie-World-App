@@ -11,7 +11,7 @@
     <!-- FrameLayout to overlay content on the background -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"> <!-- Constrain the height -->
+        android:layout_height="wrap_content"> <!-- Constrain the height -->
 
         <!-- Background Image -->
         <ImageView
@@ -19,13 +19,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-        android:src="@drawable/gradient_background"
-        android:contentDescription="Card Background" />
+            android:src="@drawable/gradient_background"
+            android:contentDescription="Card Background" />
 
         <!-- Foreground Content -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="12dp"
             android:gravity="center_vertical">
