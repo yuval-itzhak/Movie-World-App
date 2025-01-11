@@ -72,7 +72,7 @@ class MovieAdapter(val movies: List<Movie>, val callBack: MovieListener) :
 
     fun filterByGenre(genre: String) {
         filteredMovies = if (genre == "All" || genre == "הכל") {
-            movies.toMutableList() // Original unfiltered list
+            movies.toMutableList()
         } else {
             movies.filter { it.genre == genre }.toMutableList()
         }

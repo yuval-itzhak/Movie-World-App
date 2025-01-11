@@ -24,11 +24,9 @@ interface MovieDao {
     @Query("SELECT * FROM movies ORDER BY content ASC")
     fun getMovies(): LiveData<List<Movie>>
 
-    // Fetch by primary key (id)
     @Query("SELECT * FROM movies WHERE id = :id")
     fun getMovie(id: Int): Movie
 
-    // Search by content (optional)
     @Query("SELECT * FROM movies WHERE content LIKE '%' || :content || '%'")
     fun getMovieByContent(content: String): List<Movie>
 

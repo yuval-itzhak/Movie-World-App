@@ -38,7 +38,6 @@ class AllMoviesFragment : Fragment() {
     private lateinit var genreAdapter: GenreAdapter
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -53,7 +52,7 @@ class AllMoviesFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.fab.setOnClickListener {
-            viewModel.clearChosenMovie() // Clear any previously selected item
+            viewModel.clearChosenMovie()
             findNavController().navigate(R.id.action_allMoviesFragment_to_addMovieFragment)
         }
         return binding.root
@@ -80,8 +79,11 @@ class AllMoviesFragment : Fragment() {
                     val bundle = Bundle().apply {
                         putString("add/edit", getString(R.string.edit_movie))
                     }
-                    viewModel.setMovie(movie) // Pass the selected item to ViewModel for editing
-                    findNavController().navigate(R.id.action_allMoviesFragment_to_addMovieFragment, bundle)
+                    viewModel.setMovie(movie)
+                    findNavController().navigate(
+                        R.id.action_allMoviesFragment_to_addMovieFragment,
+                        bundle
+                    )
                 }
             })
             binding.recycle.adapter = adapter
@@ -92,7 +94,10 @@ class AllMoviesFragment : Fragment() {
             override fun getMovementFlags(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder
-            ) = makeFlag(ItemTouchHelper.ACTION_STATE_SWIPE, ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT)
+            ) = makeFlag(
+                ItemTouchHelper.ACTION_STATE_SWIPE,
+                ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT
+            )
 
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -109,13 +114,17 @@ class AllMoviesFragment : Fragment() {
                     .setMessage(getString(R.string.are_you_sure))
                     .setPositiveButton(getString(R.string.yes)) { _, _ ->
                         viewModel.deleteMovie(movie)
-                        Toast.makeText(requireContext(),
-                            getString(R.string.movie_deleted), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.movie_deleted), Toast.LENGTH_SHORT
+                        ).show()
                     }
                     .setNegativeButton(getString(R.string.no)) { _, _ ->
                         (binding.recycle.adapter as MovieAdapter).notifyItemChanged(position)
-                        Toast.makeText(requireContext(),
-                            getString(R.string.movie_not_deleted), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.movie_not_deleted), Toast.LENGTH_SHORT
+                        ).show()
                     }
                     .setOnCancelListener {
                         (binding.recycle.adapter as MovieAdapter).notifyItemChanged(position)
@@ -131,7 +140,7 @@ class AllMoviesFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s != null && this@AllMoviesFragment::adapter.isInitialized) {
-                    adapter.filterByTitle(s.toString()) // Call the filter function of the adapter
+                    adapter.filterByTitle(s.toString())
                 }
             }
 
@@ -167,7 +176,7 @@ class AllMoviesFragment : Fragment() {
 
     @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.info_button){
+        if (item.itemId == R.id.info_button) {
             val snackbar = Snackbar.make(
                 binding.root,
                 getString(R.string.swipe_for_delete_a_movie_long_click_for_more_details),
@@ -193,7 +202,8 @@ class AllMoviesFragment : Fragment() {
             snackbar.view.setBackgroundColor(Color.BLACK)
 
             // Customize the text appearance
-            val snackbarText = snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+            val snackbarText =
+                snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
             snackbarText.maxLines = 4
             snackbarText.textAlignment = View.TEXT_ALIGNMENT_CENTER
             snackbarText.setTextColor(Color.WHITE)
@@ -208,20 +218,20 @@ class AllMoviesFragment : Fragment() {
             snackbar.show()
 
         }
-        if (item.itemId == R.id.action_delete){
+        if (item.itemId == R.id.action_delete) {
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle(getString(R.string.confirm_deletion))
                 .setMessage(getString(R.string.are_you_sure_you_want_to_delete_all))
-                .setPositiveButton(getString(R.string.yes)){
-                    p0, p1 ->
+                .setPositiveButton(getString(R.string.yes)) { p0, p1 ->
                     viewModel.deleteAll()
-                    Toast.makeText(requireContext(),
-                        getString(R.string.movies_deleted), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.movies_deleted), Toast.LENGTH_SHORT
+                    ).show()
                 }.show()
         }
         return super.onOptionsItemSelected(item)
     }
-
 
 
     override fun onDestroyView() {

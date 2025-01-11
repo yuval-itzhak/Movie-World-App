@@ -62,7 +62,7 @@ class AddMovieFragment : Fragment() {
             if (uri != null) {
                 imageUri = uri
                 binding.resultImage.setImageURI(uri)
-                binding.resultImage.visibility = View.VISIBLE // Show image when selected
+                binding.resultImage.visibility = View.VISIBLE
                 requireActivity().contentResolver.takePersistableUriPermission(
                     uri,
                     Intent.FLAG_GRANT_READ_URI_PERMISSION
@@ -70,13 +70,11 @@ class AddMovieFragment : Fragment() {
             }
         }
 
-        // Initially hide the ImageView
         binding.resultImage.visibility = View.INVISIBLE
 
         setupRecyclerView()
         setupBulletInput(binding.movieStars)
 
-        // Prefill fields if editing an existing item
         val chosenMovie = viewModel.chosenMovie.value
         chosenMovie?.let { movie ->
             binding.movieTitle.setText(movie.title)
@@ -87,11 +85,10 @@ class AddMovieFragment : Fragment() {
             binding.movieRelease.setText(movie.release.toString())
             binding.movieDescription.setText(movie.description)
 
-            // Set the existing poster if available
             imageUri = movie.photo?.let { Uri.parse(it) }
             if (imageUri != null) {
                 binding.resultImage.setImageURI(imageUri)
-                binding.resultImage.visibility = View.VISIBLE // Ensure visibility for existing poster
+                binding.resultImage.visibility = View.VISIBLE
             }
 
             binding.videoIdInput.setText(movie.videoId)
@@ -161,7 +158,7 @@ class AddMovieFragment : Fragment() {
                 Toast.makeText(requireContext(), getString(R.string.alert_movie_description), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (photo == null || photo.isEmpty()) {
+            if (photo.isNullOrEmpty()) {
                 Toast.makeText(requireContext(), getString(R.string.alert_select_poster), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -198,7 +195,6 @@ class AddMovieFragment : Fragment() {
             findNavController().navigate(R.id.action_addMovieFragment_to_allMoviesFragment)
         }
 
-        // Handle Image button
         binding.imageBtn.setOnClickListener {
             pickImageLauncher.launch(arrayOf("image/*"))
         }
@@ -218,11 +214,11 @@ class AddMovieFragment : Fragment() {
             getString(R.string.other)
         )
 
-        val selectedGenre = viewModel.chosenMovie.value?.genre // Get the selected genre for editing
+        val selectedGenre = viewModel.chosenMovie.value?.genre
 
         genreAdapter = GenreAdapter(genres, object : GenreAdapter.OnGenreClickListener {
             override fun onGenreClick(genre: String) {
-                binding.genreSelection.setText(genre) // Update the selected genre in the input field
+                binding.genreSelection.text = genre
             }
         }, selectedGenre)
 

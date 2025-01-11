@@ -61,7 +61,7 @@ class DetailMovieFragment : Fragment() {
                 Glide.with(requireContext()).load(movie.photo).into(binding.movieImage)
                 videoId = movie.videoId
 
-                if (videoId.isNullOrEmpty()) { //Toggle youtube player visibility based on the value of videoId
+                if (videoId.isNullOrEmpty()) {
                     binding.youtubePlayerView.visibility = View.GONE
                 } else {
                     binding.youtubePlayerView.visibility = View.VISIBLE

@@ -11,10 +11,10 @@ import com.example.movieworldproject.R
 class GenreAdapter(
     private val genres: List<String>,
     private val listener: OnGenreClickListener,
-    private val initialSelectedGenre: String? = null // For preselecting a genre
+    private val initialSelectedGenre: String? = null
 ) : RecyclerView.Adapter<GenreAdapter.GenreViewHolder>() {
 
-    private var selectedPosition: Int = genres.indexOf(initialSelectedGenre) // Initialize with the selected genre's position
+    private var selectedPosition: Int = genres.indexOf(initialSelectedGenre)
 
     interface OnGenreClickListener {
         fun onGenreClick(genre: String)
@@ -25,18 +25,21 @@ class GenreAdapter(
         return GenreViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: GenreViewHolder, @SuppressLint("RecyclerView") position: Int) {
+    override fun onBindViewHolder(
+        holder: GenreViewHolder,
+        @SuppressLint("RecyclerView") position: Int
+    ) {
         val genre = genres[position]
         holder.genreTextView.text = genre
 
         // Default styling for unselected items
-        holder.genreTextView.setBackgroundColor(0xFFFDE7.toInt()) // Light yellow background
-        holder.genreTextView.setTextColor(0xFF000000.toInt()) // Black text
+        holder.genreTextView.setBackgroundColor(0xFFFDE7.toInt())
+        holder.genreTextView.setTextColor(0xFF000000.toInt())
 
         // Highlight selected item
         if (position == selectedPosition) {
-            holder.genreTextView.setBackgroundColor(0xFFC6A700.toInt()) // Darker yellow
-            holder.genreTextView.setTextColor(0xFF000000.toInt()) // White text
+            holder.genreTextView.setBackgroundColor(0xFFC6A700.toInt())
+            holder.genreTextView.setTextColor(0xFF000000.toInt())
         }
 
         // Handle click event to update selection
