@@ -194,7 +194,7 @@ class AllMoviesFragment : Fragment() {
 
             // Customize the text appearance
             val snackbarText = snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
-            snackbarText.maxLines = 2
+            snackbarText.maxLines = 4
             snackbarText.textAlignment = View.TEXT_ALIGNMENT_CENTER
             snackbarText.setTextColor(Color.WHITE)
             snackbarText.textSize = 14f
