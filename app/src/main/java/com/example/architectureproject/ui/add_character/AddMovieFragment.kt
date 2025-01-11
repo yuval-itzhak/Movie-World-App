@@ -1,5 +1,6 @@
 package com.example.movieworldproject.ui.add_character
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -42,7 +43,7 @@ class AddMovieFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = AddMovieLayoutBinding.inflate(inflater, container, false)
         textView = binding.newOrEditMovie
 
@@ -54,6 +55,7 @@ class AddMovieFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -78,7 +80,7 @@ class AddMovieFragment : Fragment() {
         val chosenMovie = viewModel.chosenMovie.value
         chosenMovie?.let { movie ->
             binding.movieTitle.setText(movie.title)
-            binding.genreSelection.setText(movie.genre)
+            binding.genreSelection.text = movie.genre
             binding.movieDirector.setText(movie.director)
             binding.movieWriter.setText(movie.writer)
             binding.movieStars.setText(movie.stars)

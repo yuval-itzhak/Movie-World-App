@@ -13,7 +13,7 @@ class MovieRepository(application : Application)  {
 
     init {
         val db = MovieDataBase.getDataBase(application.applicationContext)
-        movieDao = db?.movieDao()
+        movieDao = db.movieDao()
 
     }
 
