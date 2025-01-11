@@ -1,4 +1,4 @@
-package com.example.architectureproject
+package com.example.movieworldproject
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.architectureproject.ui.all_characters
+package com.example.movieworldproject.ui.all_characters
 
 import android.graphics.Color
 import android.view.Menu
@@ -22,10 +22,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.architectureproject.R
-import com.example.architectureproject.databinding.AllMoviesLayoutBinding
-import com.example.architectureproject.ui.MoviesViewModel
-import com.example.architectureproject.ui.genre_selection.GenreAdapter
+import com.example.movieworldproject.R
+import com.example.movieworldproject.databinding.AllMoviesLayoutBinding
+import com.example.movieworldproject.ui.MoviesViewModel
+import com.example.movieworldproject.ui.genre_selection.GenreAdapter
 import com.google.android.material.snackbar.Snackbar
 
 class AllMoviesFragment : Fragment() {

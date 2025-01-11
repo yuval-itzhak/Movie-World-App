@@ -1,4 +1,4 @@
-package com.example.architectureproject.data.local_db
+package com.example.movieworldproject.data.local_db
 
 import android.content.Context
 import androidx.room.Database
@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.architectureproject.data.model.Movie
+import com.example.movieworldproject.data.model.Movie
 
 @Database(entities = [Movie::class], version = 6, exportSchema = false)
 abstract class MovieDataBase : RoomDatabase() {

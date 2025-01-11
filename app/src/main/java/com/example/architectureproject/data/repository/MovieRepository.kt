@@ -1,10 +1,10 @@
-package com.example.architectureproject.data.repository
+package com.example.movieworldproject.data.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import com.example.architectureproject.data.local_db.MovieDao
-import com.example.architectureproject.data.local_db.MovieDataBase
-import com.example.architectureproject.data.model.Movie
+import com.example.movieworldproject.data.local_db.MovieDao
+import com.example.movieworldproject.data.local_db.MovieDataBase
+import com.example.movieworldproject.data.model.Movie
 
 class MovieRepository(application : Application)  {
 

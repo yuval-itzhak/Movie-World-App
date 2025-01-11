@@ -1,4 +1,4 @@
-package com.example.architectureproject.ui.genre_selection
+package com.example.movieworldproject.ui.genre_selection
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.architectureproject.R
+import com.example.movieworldproject.R
 
 class GenreAdapter(
     private val genres: List<String>,

@@ -1,8 +1,8 @@
-package com.example.architectureproject.ui.all_characters
+package com.example.movieworldproject.ui.all_characters
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.architectureproject.databinding.MovieLayoutBinding
-import com.example.architectureproject.data.model.Movie
+import com.example.movieworldproject.databinding.MovieLayoutBinding
+import com.example.movieworldproject.data.model.Movie
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.architectureproject"
+    namespace = "com.example.movieworldproject"
     compileSdk = 35
 
     buildFeatures{
@@ -14,7 +14,7 @@ android {
 
 
     defaultConfig {
-        applicationId = "com.example.architectureproject"
+        applicationId = "com.example.movieworldproject"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

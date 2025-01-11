@@ -1,10 +1,9 @@
-package com.example.architectureproject.ui
+package com.example.movieworldproject.ui
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.example.architectureproject.R
+import com.example.movieworldproject.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

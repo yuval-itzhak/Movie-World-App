@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/allMoviesFragment"
-        android:name="com.example.architectureproject.ui.all_characters.AllMoviesFragment"
+        android:name="com.example.movieworldproject.ui.all_characters.AllMoviesFragment"
         android:label="all_movies_layout"
         tools:layout="@layout/all_movies_layout" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/addMovieFragment"
-        android:name="com.example.architectureproject.ui.add_character.AddMovieFragment"
+        android:name="com.example.movieworldproject.ui.add_character.AddMovieFragment"
         android:label="add_movie_layout"
         tools:layout="@layout/add_movie_layout" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailMovieFragment"
-        android:name="com.example.architectureproject.ui.single_character.DetailMovieFragment"
+        android:name="com.example.movieworldproject.ui.single_character.DetailMovieFragment"
         android:label="detail_movie_layout"
         tools:layout="@layout/detail_movie_layout" >
         <action

@@ -1,12 +1,12 @@
-package com.example.architectureproject.ui
+package com.example.movieworldproject.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.architectureproject.data.repository.MovieRepository
-import com.example.architectureproject.data.model.Movie
+import com.example.movieworldproject.data.repository.MovieRepository
+import com.example.movieworldproject.data.model.Movie
 import kotlinx.coroutines.launch
 
 class MoviesViewModel(application : Application) : AndroidViewModel(application) {

@@ -1,4 +1,4 @@
-package com.example.architectureproject.ui.single_character
+package com.example.movieworldproject.ui.single_character
 
 import android.os.Bundle
 import android.text.Html
@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
-import com.example.architectureproject.databinding.DetailMovieLayoutBinding
-import com.example.architectureproject.ui.MoviesViewModel
+import com.example.movieworldproject.databinding.DetailMovieLayoutBinding
+import com.example.movieworldproject.ui.MoviesViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.example.architectureproject.R
+import com.example.movieworldproject.R
 
 class DetailMovieFragment : Fragment() {
 

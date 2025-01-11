@@ -1,4 +1,4 @@
-package com.example.architectureproject.data.model
+package com.example.movieworldproject.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

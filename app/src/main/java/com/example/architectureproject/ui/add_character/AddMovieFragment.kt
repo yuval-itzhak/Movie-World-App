@@ -1,4 +1,4 @@
-package com.example.architectureproject.ui.add_character
+package com.example.movieworldproject.ui.add_character
 
 import android.content.Intent
 import android.net.Uri
@@ -14,11 +14,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.architectureproject.R
-import com.example.architectureproject.data.model.Movie
-import com.example.architectureproject.databinding.AddMovieLayoutBinding
-import com.example.architectureproject.ui.MoviesViewModel
-import com.example.architectureproject.ui.genre_selection.GenreAdapter
+import com.example.movieworldproject.R
+import com.example.movieworldproject.data.model.Movie
+import com.example.movieworldproject.databinding.AddMovieLayoutBinding
+import com.example.movieworldproject.ui.MoviesViewModel
+import com.example.movieworldproject.ui.genre_selection.GenreAdapter
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.KeyEvent
