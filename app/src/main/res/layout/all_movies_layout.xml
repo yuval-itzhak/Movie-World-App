@@ -84,6 +84,14 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:padding="8dp" />
 
             <!-- RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView

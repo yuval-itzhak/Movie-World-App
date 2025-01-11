@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.architectureproject.R
 import com.example.architectureproject.databinding.AllMoviesLayoutBinding
 import com.example.architectureproject.ui.MoviesViewModel
+import com.example.architectureproject.ui.genre_selection.GenreAdapter
 import com.google.android.material.snackbar.Snackbar
 
 class AllMoviesFragment : Fragment() {
@@ -34,6 +35,8 @@ class AllMoviesFragment : Fragment() {
 
     private val viewModel: MoviesViewModel by activityViewModels()
     lateinit var adapter: MovieAdapter
+    private lateinit var genreAdapter: GenreAdapter
+
 
 
     override fun onCreateView(
@@ -42,13 +45,12 @@ class AllMoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        setHasOptionsMenu(true)
-
         _binding = AllMoviesLayoutBinding.inflate(inflater, container, false)
 
+        // Set up RecyclerView
+        setupGenreRecyclerView()
         setupSearchBar()
-
-
+        setHasOptionsMenu(true)
 
         binding.fab.setOnClickListener {
             viewModel.clearChosenMovie() // Clear any previously selected item
@@ -137,7 +139,24 @@ class AllMoviesFragment : Fragment() {
         })
     }
 
+    private fun setupGenreRecyclerView() {
+        // Ensure getString is called after the Fragment is attached to its context
+        val genres = resources.getStringArray(R.array.movie_genres).toList()
 
+        val selectedGenre = viewModel.chosenMovie.value?.genre // Get the selected genre for editing
+
+        genreAdapter = GenreAdapter(genres, object : GenreAdapter.OnGenreClickListener {
+            override fun onGenreClick(genre: String) {
+                // Handle genre selection and filter movies based on the selected genre
+                adapter.filterByGenre(genre)
+            }
+        }, selectedGenre)
+
+        binding.recyclerViewFilter.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = genreAdapter
+        }
+    }
 
     @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -202,6 +221,8 @@ class AllMoviesFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

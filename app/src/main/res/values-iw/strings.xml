@@ -31,7 +31,7 @@
     <string name="comedy">קומדיה</string>
     <string name="drama">דרמה</string>
     <string name="fantasy">פנטזיה</string>
-    <string name="sci_fi">מד"ב</string>
+    <string name="sci_fi">מדע בדיוני</string>
     <string name="horror">אימה</string>
     <string name="romantic">רומנטי</string>
     <string name="documentary">דוקומנטרי</string>
@@ -51,7 +51,6 @@
 
 
 
-
 <!--detail movie-->
     <string name="movie_genre"><![CDATA[<b>זאנר:</b><br>%s]]></string>
     <string name="movie_director"><![CDATA[<b>במאי:</b><br>%s]]></string>
@@ -67,4 +66,18 @@
     <string name="movie_release_year_hint">שנת יציאה:</string>
     <string name="movie_description_hint">תיאור:</string>
     <string name="movie_image_hint">תמונה מהסרט:</string>
+
+
+    <string-array name="movie_genres">
+        <item>פעולה</item>
+        <item>קומדיה</item>
+        <item>דרמה</item>
+        <item>פנטזיה</item>
+        <item>מדע בדיוני</item>
+        <item>אימה</item>
+        <item>רומנטיקה</item>
+        <item>דוקומנטרי</item>
+        <item>מוזיקלי</item>
+        <item>הכל</item>
+    </string-array>
 </resources>

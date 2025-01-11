@@ -67,4 +67,19 @@
     <string name="movie_description_hint">Description:</string>
     <string name="movie_image_hint">Movie image:</string>
 
+
+    <string-array name="movie_genres">
+        <item>Action</item>
+        <item>Comedy</item>
+        <item>Drama</item>
+        <item>Fantasy</item>
+        <item>Sci-Fi</item>
+        <item>Horror</item>
+        <item>Romantic</item>
+        <item>Documentary</item>
+        <item>Musical</item>
+        <item>All</item>
+    </string-array>
+
+
 </resources>

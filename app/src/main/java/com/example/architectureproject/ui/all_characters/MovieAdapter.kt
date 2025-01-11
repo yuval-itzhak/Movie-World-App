@@ -69,6 +69,17 @@ class MovieAdapter(val movies: List<Movie>, val callBack: MovieListener) :
         }
         notifyDataSetChanged()
     }
+
+    fun filterByGenre(genre: String) {
+        filteredMovies = if (genre == "All" || genre == "הכל") {
+            movies.toMutableList() // Original unfiltered list
+        } else {
+            movies.filter { it.genre == genre }.toMutableList()
+        }
+        notifyDataSetChanged()
+    }
+
+
 }
 
 
