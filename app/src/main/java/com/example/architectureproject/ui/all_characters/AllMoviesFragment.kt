@@ -28,6 +28,7 @@ import com.example.movieworldproject.ui.MoviesViewModel
 import com.example.movieworldproject.ui.genre_selection.GenreAdapter
 import com.google.android.material.snackbar.Snackbar
 
+@Suppress("DEPRECATION")
 class AllMoviesFragment : Fragment() {
 
     private var _binding: AllMoviesLayoutBinding? = null
@@ -222,7 +223,7 @@ class AllMoviesFragment : Fragment() {
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle(getString(R.string.confirm_deletion))
                 .setMessage(getString(R.string.are_you_sure_you_want_to_delete_all))
-                .setPositiveButton(getString(R.string.yes)) { p0, p1 ->
+                .setPositiveButton(getString(R.string.yes)) { _, _ ->
                     viewModel.deleteAll()
                     Toast.makeText(
                         requireContext(),
