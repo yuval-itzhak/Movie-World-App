@@ -152,9 +152,9 @@ class AddMovieFragment : Fragment() {
                     getString(R.string.enter_stars_names), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (!stars.matches(Regex("^['a-zA-Zא-ת•\\s]+$"))) {
-                Toast.makeText(requireContext(),
-                    getString(R.string.enter_stars_names_properly), Toast.LENGTH_SHORT).show()
+            val trimmedStars = stars.trim()
+            if (!trimmedStars.matches(Regex("^[a-zA-Zא-ת•'\\s]+$"))) {
+                Toast.makeText(requireContext(), getString(R.string.enter_stars_names_properly), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             if (description.isEmpty()) {
