@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/gradient_background"
-            android:contentDescription="Card Background" />
+            android:contentDescription="@string/card_background_desc" />
 
         <!-- Foreground Content -->
         <LinearLayout
@@ -36,7 +36,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:src="@drawable/ic_launcher_foreground"
-                android:contentDescription="Item image"
+                android:contentDescription="@string/item_image_desc"
                 android:scaleType="centerCrop" />
 
             <!-- Movie Details -->
@@ -51,7 +51,7 @@
                     android:id="@+id/movie_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Movie Name"
+                    android:text="@string/movie_name_desc"
                     android:layout_gravity="start"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -61,21 +61,21 @@
                     android:id="@+id/movie_genre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Genre: Action"
+                    android:text="@string/movie_genre_desc"
                     android:layout_gravity="start"
                     android:textSize="16sp"
                     android:layout_marginTop="6dp"
-                    android:textColor="#555555" />
+                    android:textColor="#333333" />
 
                 <TextView
                     android:id="@+id/movie_year"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Year: 2023"
+                    android:text="@string/movie_year_desc"
                     android:layout_gravity="start"
                     android:textSize="16sp"
                     android:layout_marginTop="4dp"
-                    android:textColor="#555555" />
+                    android:textColor="#333333" />
             </LinearLayout>
 
             <!-- Action Buttons -->
@@ -87,12 +87,12 @@
 
                 <ImageButton
                     android:id="@+id/edit_button"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="end"
                     android:src="@drawable/baseline_movie_edit_24"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="Edit Button"
+                    android:contentDescription="@string/edit_button_desc"
                     android:layout_marginTop="8dp"
                     app:tint="#100E47" />
             </LinearLayout>

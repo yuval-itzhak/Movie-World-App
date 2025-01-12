@@ -8,7 +8,7 @@
     <string name="movie_deleted">הסרט נמחק</string>
     <string name="no">לא</string>
     <string name="movie_not_deleted">הסרט לא נמחק</string>
-    <string name="swipe_for_delete_a_movie_long_click_for_more_details">החלק למחיקה\nלחיצה ארוכה למידע נוסף</string>
+    <string name="swipe_for_delete_a_movie_click_for_more_details">החלק למחיקה\nלחיצה למידע נוסף</string>
     <string name="dismiss">אישור</string>
     <string name="are_you_sure_you_want_to_delete_all">אתה בטוח שתרצה למחוק את כל הסרטים?</string>
     <string name="movies_deleted">כל הסרטים נמחקו</string>
@@ -48,6 +48,14 @@
     <string name="alert_select_poster">נא לבחור פוסטר</string>
     <string name="enter_stars_names">הכנס שמות שחקנים ראשיים</string>
     <string name="enter_stars_names_properly">שם שחקן מכיל רק אותיות</string>
+    <string name="content_description_sIcon">אייקון חיפוש</string>
+    <string name="content_description_background">רקע</string>
+    <string name="card_background_desc">רקע כרטיס</string>
+    <string name="item_image_desc">תמונה</string>
+    <string name="movie_name_desc">שם הסרט</string>
+    <string name="movie_genre_desc">זאנר: אקשן</string>
+    <string name="movie_year_desc">שנה: 2023</string>
+    <string name="edit_button_desc">כפתור עריכת סרטים</string>
 
 
 

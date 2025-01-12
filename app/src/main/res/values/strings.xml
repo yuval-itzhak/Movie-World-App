@@ -7,7 +7,9 @@
     <string name="movie_deleted">Movie deleted</string>
     <string name="no">No</string>
     <string name="movie_not_deleted">Movie not deleted</string>
-    <string name="swipe_for_delete_a_movie_long_click_for_more_details">Swipe for delete a movie\nLong click for more details</string>
+    <string name="swipe_for_delete_a_movie_click_for_more_details">
+    Swipe to delete a movie, click for more details.
+</string>
     <string name="dismiss">CONFIRM</string>
     <string name="are_you_sure_you_want_to_delete_all">"Are you sure you want to delete all? "</string>
     <string name="movies_deleted">Movies deleted</string>
@@ -47,6 +49,14 @@
     <string name="alert_select_poster">Select poster</string>
     <string name="enter_stars_names">Enter stars names</string>
     <string name="enter_stars_names_properly">Enter stars names properly</string>
+    <string name="content_description_sIcon">Search icon</string>
+    <string name="content_description_background">Background</string>
+    <string name="card_background_desc">Card Background</string>
+    <string name="item_image_desc">Item image</string>
+    <string name="movie_name_desc">Movie Name</string>
+    <string name="movie_genre_desc">Genre: Action</string>
+    <string name="movie_year_desc">Year: 2023</string>
+    <string name="edit_button_desc">Edit movie details</string>
 
 
 

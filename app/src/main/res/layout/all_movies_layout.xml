@@ -54,7 +54,7 @@
                         android:id="@+id/search_card_background"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:contentDescription="background"
+                        android:contentDescription="@string/content_description_background"
                         android:scaleType="centerCrop"
                         android:src="@drawable/gradient_background" />
 
@@ -66,7 +66,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:src="@drawable/baseline_search_24"
-                        android:contentDescription="Search Icon" />
+                        android:contentDescription="@string/content_description_sIcon" />
 
                     <!-- Search Bar -->
                     <EditText
@@ -74,10 +74,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_toEndOf="@id/search_icon"
-                        android:layout_toRightOf="@id/search_icon"
                         android:background="@android:color/transparent"
                         android:gravity="center_vertical"
                         android:hint="@string/search_for_a_movie"
+                        android:inputType="text"
+                        android:importantForAutofill="no"
                         android:paddingStart="8dp"
                         android:paddingEnd="16dp"
                         android:textSize="16sp" />

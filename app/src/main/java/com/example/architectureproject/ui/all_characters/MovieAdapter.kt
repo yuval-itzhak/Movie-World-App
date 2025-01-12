@@ -15,26 +15,26 @@ class MovieAdapter(val movies: List<Movie>, val callBack: MovieListener) :
     private var filteredMovies: MutableList<Movie> = movies.toMutableList()
 
     interface MovieListener {
-        fun onMovieLongClicked(position: Int)
         fun onEditClicked(position: Int)
+        fun onMovieClicked(position: Int)
     }
 
 
     inner class MovieViewHolder(private val binding: MovieLayoutBinding) :
-        RecyclerView.ViewHolder(binding.root), View.OnLongClickListener {
+        RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
         init {
-            binding.root.setOnLongClickListener(this)
+            binding.root.setOnClickListener(this)
 
             binding.editButton.setOnClickListener {
                 callBack.onEditClicked(adapterPosition)
             }
         }
 
-        override fun onLongClick(p0: View?): Boolean {
-            callBack.onMovieLongClicked(adapterPosition)
-            return true
+        override fun onClick(v: View?) {
+            callBack.onMovieClicked(adapterPosition) // Notify callback on item click
         }
+
 
         fun bind(movie: Movie) {
             binding.movieName.text = movie.title

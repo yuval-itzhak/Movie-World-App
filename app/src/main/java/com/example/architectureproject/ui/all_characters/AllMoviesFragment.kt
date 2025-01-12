@@ -69,7 +69,7 @@ class AllMoviesFragment : Fragment() {
             adapter = MovieAdapter(movieList, object : MovieAdapter.MovieListener {
 
 
-                override fun onMovieLongClicked(position: Int) {
+                override fun onMovieClicked(position: Int) {
                     val movie = movieList[position]
                     viewModel.setMovie(movie)
                     findNavController().navigate(R.id.action_allMoviesFragment_to_detailMovieFragment)
@@ -180,7 +180,7 @@ class AllMoviesFragment : Fragment() {
         if (item.itemId == R.id.info_button) {
             val snackbar = Snackbar.make(
                 binding.root,
-                getString(R.string.swipe_for_delete_a_movie_long_click_for_more_details),
+                getString(R.string.swipe_for_delete_a_movie_click_for_more_details),
                 Snackbar.LENGTH_INDEFINITE // Use INDEFINITE duration
             )
 
